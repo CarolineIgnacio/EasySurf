@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Entidade/Aluno.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Tela/TelaCadastroAluno.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Controlador/ControladorEscola.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/DAOs/AlunoDAO.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Controlador/ControladorPrincipal.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Controlador/ControladorAluno.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Tela/TelaAcessoFuncionario.java</file>
-            <file>file:/home/caroline/Documentos/UFSC/EasySurf/src/easysurf/Tela/TelaPrincipal.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaCadastroPrancha.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaAcessoFuncionario.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/DAOs/AlunoDAO.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaCadastroAula.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaAluno.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaPrincipal.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Entidade/Aluno.java</file>
+            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaPrancha.java</file>
         </group>
     </open-files>
 </project-private>

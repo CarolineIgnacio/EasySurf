@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public class AlunoDAO implements Serializable {
 
-    private final String filename = "usuarios.dat";
+    private final String filename = "usuarios.txt";
     private HashMap<String, Aluno> cacheAlunos = new HashMap<>();
 
     private static AlunoDAO AlunoDAO;

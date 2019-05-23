@@ -37,6 +37,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel1.setText("Nome do Aluno");
 
         jCheckBox1.setText("Pacote");
@@ -67,15 +68,16 @@ public class TelaCadastroAula extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
                 .addGap(93, 93, 93))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(132, 132, 132))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jButton1)
-                .addGap(36, 36, 36)
-                .addComponent(jButton2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jButton1)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel1)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

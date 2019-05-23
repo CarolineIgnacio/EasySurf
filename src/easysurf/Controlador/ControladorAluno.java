@@ -22,13 +22,13 @@ public class ControladorAluno {
         
     }
     
-    public boolean criaAluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String telefoneContatoEmergencia) {
+    public boolean criaAluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
         for (Aluno aluno: ControladorEscola.getInstance().getAlunos()) {
             if (aluno.getCPF().equals(CPF)) {
                 return false;
             }
         }
-        Aluno aluno = new Aluno(nome, RG, CPF, telefone, dataNascimento, contatoEmergencia, telefoneContatoEmergencia);
+        Aluno aluno = new Aluno(nome, RG, CPF, telefone, dataNascimento, contatoEmergencia, relacaoEmergencia, telefoneContatoEmergencia);
         ControladorEscola.getInstance().adicionaAluno(aluno);
         return true;
     }

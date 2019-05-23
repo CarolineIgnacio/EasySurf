@@ -23,16 +23,18 @@ public class Aluno implements Serializable{
     String telefone;
     Date dataNascimento;
     String contatoEmergencia;
+    String relacaoEmergencia;
     String telefoneContatoEmergencia;
     ArrayList<Aula> aulas; //Mudar para persistência depois.
 
-    public Aluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String telefoneContatoEmergencia) {
+    public Aluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
         this.nome = nome;
         this.RG = RG;
         this.CPF = CPF;
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
         this.contatoEmergencia = contatoEmergencia;
+        this.relacaoEmergencia = relacaoEmergencia;
         this.telefoneContatoEmergencia = telefoneContatoEmergencia;
     }
 
