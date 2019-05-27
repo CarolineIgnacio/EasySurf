@@ -21,10 +21,11 @@ public class Aluno implements Serializable{
     String RG;
     String CPF;
     String telefone;
+    int nivel;
     Date dataNascimento;
-    String contatoEmergencia;
+    String nomeEmergencia;
     String relacaoEmergencia;
-    String telefoneContatoEmergencia;
+    String telefoneEmergencia;
     ArrayList<Aula> aulas; //Mudar para persistência depois.
 
     public Aluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
@@ -33,9 +34,9 @@ public class Aluno implements Serializable{
         this.CPF = CPF;
         this.telefone = telefone;
         this.dataNascimento = dataNascimento;
-        this.contatoEmergencia = contatoEmergencia;
+        this.nomeEmergencia = contatoEmergencia;
         this.relacaoEmergencia = relacaoEmergencia;
-        this.telefoneContatoEmergencia = telefoneContatoEmergencia;
+        this.telefoneEmergencia = telefoneContatoEmergencia;
     }
 
     public String getNome() {
@@ -78,20 +79,20 @@ public class Aluno implements Serializable{
         this.dataNascimento = dataNascimento;
     }
 
-    public String getContatoEmergencia() {
-        return contatoEmergencia;
+    public String getNomeEmergencia() {
+        return nomeEmergencia;
     }
 
-    public void setContatoEmergencia(String contatoEmergencia) {
-        this.contatoEmergencia = contatoEmergencia;
+    public void setNomeEmergencia(String nomeEmergencia) {
+        this.nomeEmergencia = nomeEmergencia;
     }
 
-    public String getTelefoneContatoEmergencia() {
-        return telefoneContatoEmergencia;
+    public String getTelefoneEmergencia() {
+        return telefoneEmergencia;
     }
 
-    public void setTelefoneContatoEmergencia(String telefoneContatoEmergencia) {
-        this.telefoneContatoEmergencia = telefoneContatoEmergencia;
+    public void setTelefoneEmergencia(String telefoneEmergencia) {
+        this.telefoneEmergencia = telefoneEmergencia;
     }
 
     public ArrayList<Aula> getAulas() {

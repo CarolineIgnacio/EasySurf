@@ -5,7 +5,7 @@
  */
 package easysurf.Controlador;
 
-import easysurf.Entidade.Funcionario;
+import easysurf.Entidade.Escola;
 
 /**
  *
@@ -14,13 +14,13 @@ import easysurf.Entidade.Funcionario;
 public class ControladorFuncionario {
     
     private static ControladorFuncionario instance;
-    Funcionario funcionario;
+    Escola funcionario;
     
     public ControladorFuncionario() {
     }
     
     public void criaFuncionario(String senha) {
-        funcionario = new Funcionario(senha);
+        funcionario = new Escola(senha);
     }
     
     public boolean senhaCorreta(String senhaFuncionario) {
