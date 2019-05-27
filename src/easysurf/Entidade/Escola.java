@@ -11,4 +11,20 @@ package easysurf.Entidade;
  */
 public class Escola {
     
+    private String senha;
+
+    public Escola(String senha) {
+        this.senha = senha;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
+    
 }

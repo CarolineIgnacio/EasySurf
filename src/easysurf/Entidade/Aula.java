@@ -5,10 +5,22 @@
  */
 package easysurf.Entidade;
 
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author caroline
  */
-public class Aula {
+public class Aula implements Serializable {
     
+    int nivel;
+    boolean pacote;
+    boolean realizada;
+    Date dataRealizacao;
+    Date dataPagamento;
+    Prancha prancha;
 }
