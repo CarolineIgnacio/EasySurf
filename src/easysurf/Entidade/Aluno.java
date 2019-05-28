@@ -99,6 +99,7 @@ public class Aluno implements Serializable{
         return aulas;
     }
 
+
     public void setAulas(ArrayList<Aula> aulas) {
         this.aulas = aulas;
     }

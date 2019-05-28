@@ -8,6 +8,7 @@ package easysurf.Controlador;
 import easysurf.Entidade.Aluno;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Vector;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ControladorAluno {
     }
     
     public boolean criaAluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
-        for (Aluno aluno: ControladorEscola.getInstance().getAlunos()) {
+        for (Aluno aluno: ControladorEscola.getInstance().getListaAlunos()) {
             if (aluno.getCPF().equals(CPF)) {
                 return false;
             }
@@ -40,6 +41,13 @@ public class ControladorAluno {
         return instance;
     }
     
-    
+    public Vector getDadosDaTabela(){
+        Vector alunos = new Vector();
+        for (Aluno a: ControladorEscola.getInstance().getListaAlunos()){
+            alunos.add(new String[] {a.getNome(), "1", a.getCPF()});
+
+        }
+        return alunos;
+    }
     
 }

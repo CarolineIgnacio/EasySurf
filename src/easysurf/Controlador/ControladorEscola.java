@@ -7,6 +7,7 @@ package easysurf.Controlador;
 
 import easysurf.DAOs.AlunoDAO;
 import easysurf.Entidade.Aluno;
+import easysurf.Entidade.Prancha;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,10 +24,16 @@ public class ControladorEscola {
         
     }
 
-    public ArrayList<Aluno> getAlunos() {
+    public ArrayList<Aluno> getListaAlunos() {
         ArrayList alunos;
-        alunos = new ArrayList(ControladorPrincipal.getDaoAulo().getList());
+        alunos = new ArrayList(ControladorPrincipal.getDaoAluno().getList());
         return alunos;
+    }
+    
+    public ArrayList<Prancha> getListaPranchas() {
+        ArrayList pranchas;
+        pranchas = new ArrayList(ControladorPrincipal.getDaoPrancha().getList());
+        return pranchas;
     }
 
 

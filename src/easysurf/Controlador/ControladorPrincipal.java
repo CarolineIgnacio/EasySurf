@@ -6,6 +6,7 @@
 package easysurf.Controlador;
 
 import easysurf.DAOs.AlunoDAO;
+import easysurf.DAOs.PranchaDAO;
 import easysurf.Tela.TelaAcessoFuncionario;
 import easysurf.Tela.TelaCadastroAluno;
 import easysurf.Tela.TelaPrincipal;
@@ -53,8 +54,13 @@ public class ControladorPrincipal {
         return instance;
     }
     
-    public static AlunoDAO getDaoAulo()
+    public static AlunoDAO getDaoAluno()
     {
         return AlunoDAO.getInstancia();
+    }
+
+    public static PranchaDAO getDaoPrancha()
+    {
+        return PranchaDAO.getInstancia();
     }
 }

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Prancha {
     
-    int codigo;
+    String codigo;
     Date dataInclusao;
     boolean disponivel;
     String modelo;
@@ -20,7 +20,7 @@ public class Prancha {
     float tamanho;
     
     
-    public Prancha(int codigo, Date datainclusao, String modelo, float tamanho){
+    public Prancha(String codigo, Date datainclusao, String modelo, float tamanho){
         this.codigo = codigo;
         this.dataInclusao = dataInclusao;
         this.modelo = modelo;
@@ -31,4 +31,7 @@ public class Prancha {
         
     }
     
+    public String getID(){
+        return this.codigo;
+    }
 }

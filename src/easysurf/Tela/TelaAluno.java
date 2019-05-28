@@ -5,6 +5,11 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorEscola;
+import easysurf.Entidade.Aluno;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author caroline
@@ -16,6 +21,7 @@ public class TelaAluno extends javax.swing.JFrame {
      */
     public TelaAluno() {
         initComponents();
+        loadTable();
     }
 
     /**
@@ -309,6 +315,16 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
     }
+    
+   void loadTable(){
+    ArrayList<Aluno> alunos;
+    alunos = ControladorEscola.getInstance().getListaAlunos();
+    DefaultTableModel tModelAlunos = new DefaultTableModel();
+    tModelAlunos.addRow(alunos.toArray());
+    
+    jTable1.setModel(tModelAlunos);
+
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

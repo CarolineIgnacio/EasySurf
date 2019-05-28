@@ -20,7 +20,12 @@ public class Aula implements Serializable {
     int nivel;
     boolean pacote;
     boolean realizada;
+    boolean pagamentoRealizado;
     Date dataRealizacao;
     Date dataPagamento;
     Prancha prancha;
+    
+    
+    
+    
 }
