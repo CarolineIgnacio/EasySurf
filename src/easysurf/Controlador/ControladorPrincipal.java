@@ -8,7 +8,9 @@ package easysurf.Controlador;
 import easysurf.DAOs.AlunoDAO;
 import easysurf.DAOs.PranchaDAO;
 import easysurf.Tela.TelaAcessoFuncionario;
+import easysurf.Tela.TelaAluno;
 import easysurf.Tela.TelaCadastroAluno;
+import easysurf.Tela.TelaCadastroAula;
 import easysurf.Tela.TelaPrincipal;
 
 /**
@@ -45,6 +47,24 @@ public class ControladorPrincipal {
     
     public void escondeTelaCadastroAluno() {
         TelaCadastroAluno.getInstance().setVisible(false);
+    }
+    
+    public void mostraTelaCadastroAula(String CPFAluno) {
+        TelaCadastroAula.getInstance().setVisible(true);
+        ControladorAula.getInstance().setCPFAluno(CPFAluno);
+    }
+    
+    public void escondeTelaCadastroAula() {
+        TelaCadastroAula.getInstance().setVisible(false);
+    }
+    
+    public void mostraTelaAluno(String CPF) {
+        TelaAluno.getInstance().setCPF(CPF);
+        TelaAluno.getInstance().setVisible(true);
+    }
+    
+    public void escondeTelaAluno() {
+        TelaAluno.getInstance().setVisible(false);
     }
 
     public static ControladorPrincipal getInstance() {

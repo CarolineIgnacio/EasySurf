@@ -10,6 +10,8 @@ package easysurf.Tela;
  * @author caroline
  */
 public class TelaCadastroAula extends javax.swing.JFrame {
+    
+    public static TelaCadastroAula instance;
 
     /**
      * Creates new form TelaCadastroAula
@@ -155,6 +157,13 @@ public class TelaCadastroAula extends javax.swing.JFrame {
                 new TelaCadastroAula().setVisible(true);
             }
         });
+    }
+    
+    public static TelaCadastroAula getInstance() {
+        if (instance == null) {
+            return instance = new TelaCadastroAula();
+        }
+        return instance;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -363,6 +363,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     
+    //quando for listar um aluno, e abrir a página dele ao dar os dois clicks no nome que 
+    //ta na tabela, passar também cmo parametro o cpf desse aluno
+    //EXEMPLO:
+    /*public void acoes() {
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorPrincipal.getInstance().mostraTelaAluno(CPFDOALUNO);
+            }
+        });
+    }*/
+    
     public static TelaPrincipal getInstance() {
         if (instance == null) {
             return instance = new TelaPrincipal();

@@ -6,7 +6,10 @@
 package easysurf.Tela;
 
 import easysurf.Controlador.ControladorEscola;
+import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +18,16 @@ import javax.swing.table.DefaultTableModel;
  * @author caroline
  */
 public class TelaAluno extends javax.swing.JFrame {
+    
+    public static TelaAluno instance;
+    private String CPF;
 
     /**
      * Creates new form TelaAluno
      */
     public TelaAluno() {
         initComponents();
+        acoes();
         loadTable();
     }
 
@@ -325,6 +332,31 @@ public class TelaAluno extends javax.swing.JFrame {
     jTable1.setModel(tModelAlunos);
 
    }
+   
+    public void acoes() {
+        jButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {             
+                ControladorPrincipal.getInstance().mostraTelaCadastroAula(CPF);
+            }
+        });
+    }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+    
+    public static TelaAluno getInstance() {
+        if (instance == null) {
+            return instance = new TelaAluno();
+        }
+        return instance;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

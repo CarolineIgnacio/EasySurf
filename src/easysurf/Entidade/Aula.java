@@ -21,11 +21,26 @@ public class Aula implements Serializable {
     boolean pacote;
     boolean realizada;
     boolean pagamentoRealizado;
+    String numeroAula;
+    String CPFAluno;
     Date dataRealizacao;
     Date dataPagamento;
     Prancha prancha;
-    
-    
-    
+
+    public String getNumeroAula() {
+        return numeroAula;
+    }
+
+    public void setNumeroAula(String numeroAula) {
+        this.numeroAula = numeroAula;
+    }
+
+    public String getCPFAluno() {
+        return CPFAluno;
+    }
+
+    public void setCPFAluno(String CPFAluno) {
+        this.CPFAluno = CPFAluno;
+    }    
     
 }
