@@ -14,7 +14,8 @@ import java.util.Date;
  * @author trust
  */
 public class ControladorPrancha {
-    public static ControladorPrancha instance;
+    
+    static ControladorPrancha instance;
    
     
     public boolean criaPrancha(String codigo, Date dataInclusao, String modelo, String observacoes, float tamanho) {

@@ -25,7 +25,7 @@ public class ControladorEscola {
         
     }
 
-    public void removePrancha(Prancha prancha) {
+    public void adicionaPrancha(Prancha prancha) {
         PranchaDAO.getInstancia().put(prancha); 
     }
     
