@@ -32,6 +32,7 @@ public class ControladorAula {
         return numeroAula;
     }
 
+    
     public void setNumeroAula() {
         this.numeroAula += AulaDAO.getInstancia().getMaiorNumero();
     }
@@ -69,6 +70,10 @@ public class ControladorAula {
         } else {
             nivelAluno = 3;
         }
+    }
+
+    public Aula getAulaPeloNumero(int numeroAula){
+        return AulaDAO.getInstancia().get(Integer.toString(numeroAula));
     }
 
     public static ControladorAula getInstance() {

@@ -20,11 +20,12 @@ public class Prancha {
     float tamanho;
     
     
-    public Prancha(String codigo, Date datainclusao, String modelo, float tamanho){
+    public Prancha(String codigo, Date datainclusao, String modelo, float tamanho, String observacoes){
         this.codigo = codigo;
-        this.dataInclusao = dataInclusao;
+        this.dataInclusao = datainclusao;
         this.modelo = modelo;
         this.tamanho = tamanho;
+        this.observacoes = observacoes;
     }
     
     public void setObservacoes(String novaObservacao){
