@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 public class AulaDAO implements Serializable {
 
     private final String filename = "aulas.txt";
-    private HashMap<String, Aula> cacheAulas = new HashMap<>();
+    private HashMap<Integer, Aula> cacheAulas = new HashMap<>();
 
     private static AulaDAO AulaDAO;
 
@@ -69,7 +69,7 @@ public class AulaDAO implements Serializable {
             FileInputStream fin = new FileInputStream(filename);
             ObjectInputStream oi = new ObjectInputStream(fin);
 
-            this.cacheAulas = (HashMap<String, Aula>) oi.readObject();
+            this.cacheAulas = (HashMap<Integer, Aula>) oi.readObject();
 
             oi.close();
             fin.close();
@@ -93,8 +93,8 @@ public class AulaDAO implements Serializable {
         return cacheAulas.get(numeroAula);
     }
     
-    public Collection<Aula> getAulaPorCPF(String CPF) {
-        Collection<Aula> aulasDeUmAluno = new ArrayList<>();
+    public ArrayList<Aula> getAulaPorCPF(String CPF) {
+        ArrayList<Aula> aulasDeUmAluno = new ArrayList<>();
         for (Aula aula: getList()) {
             if (aula.getCPFAluno() == CPF) {
                 aulasDeUmAluno.add(aula);

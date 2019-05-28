@@ -21,17 +21,25 @@ public class Aula implements Serializable {
     boolean pacote;
     boolean realizada;
     boolean pagamentoRealizado;
-    String numeroAula;
+    int numeroAula;
     String CPFAluno;
     Date dataRealizacao;
     Date dataPagamento;
     Prancha prancha;
+    
+    public Aula(int nivel, boolean pacote, boolean pagamentoRealizado, int numeroAula, String CPFAluno) {
+        this.nivel = nivel;
+        this.CPFAluno = CPFAluno;
+        this.numeroAula = numeroAula;
+        this.pacote = pacote;
+        this.pagamentoRealizado = pagamentoRealizado;
+    }
 
-    public String getNumeroAula() {
+    public int getNumeroAula() {
         return numeroAula;
     }
 
-    public void setNumeroAula(String numeroAula) {
+    public void setNumeroAula(int numeroAula) {
         this.numeroAula = numeroAula;
     }
 
@@ -41,6 +49,64 @@ public class Aula implements Serializable {
 
     public void setCPFAluno(String CPFAluno) {
         this.CPFAluno = CPFAluno;
-    }    
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public boolean isPacote() {
+        return pacote;
+    }
+
+    public void setPacote(boolean pacote) {
+        this.pacote = pacote;
+    }
+
+    public boolean isRealizada() {
+        return realizada;
+    }
+
+    public void setRealizada(boolean realizada) {
+        this.realizada = realizada;
+    }
+
+    public boolean isPagamentoRealizado() {
+        return pagamentoRealizado;
+    }
+
+    public void setPagamentoRealizado(boolean pagamentoRealizado) {
+        this.pagamentoRealizado = pagamentoRealizado;
+    }
+
+    public Date getDataRealizacao() {
+        return dataRealizacao;
+    }
+
+    public void setDataRealizacao(Date dataRealizacao) {
+        this.dataRealizacao = dataRealizacao;
+    }
+
+    public Date getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public Prancha getPrancha() {
+        return prancha;
+    }
+
+    public void setPrancha(Prancha prancha) {
+        this.prancha = prancha;
+    }
+    
+    
     
 }

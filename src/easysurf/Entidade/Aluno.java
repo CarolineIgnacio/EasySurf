@@ -5,6 +5,7 @@
  */
 package easysurf.Entidade;
 
+import easysurf.DAOs.AulaDAO;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -96,7 +97,7 @@ public class Aluno implements Serializable{
     }
 
     public ArrayList<Aula> getAulas() {
-        return aulas;
+        return AulaDAO.getInstancia().getAulaPorCPF(getCPF());
     }
 
 

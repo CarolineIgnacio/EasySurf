@@ -5,13 +5,19 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorAula;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author caroline
  */
 public class TelaCadastroAula extends javax.swing.JFrame {
-    
+
     public static TelaCadastroAula instance;
+    boolean ehPacote = false;
+    boolean estaPago = false;
 
     /**
      * Creates new form TelaCadastroAula
@@ -158,7 +164,30 @@ public class TelaCadastroAula extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    public void acoes() {
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jCheckBox1.isSelected()) {
+                    ehPacote = true;
+                } else {
+                    ehPacote = false;
+                }
+                
+                if(jCheckBox2.isSelected()) {
+                    estaPago = true;
+                }else {
+                    estaPago = false;
+                }
+                
+                ControladorAula.getInstance().criaAula(ehPacote, estaPago);
+            }
+        });
+        ehPacote = false;
+        estaPago = false;
+    }
+
     public static TelaCadastroAula getInstance() {
         if (instance == null) {
             return instance = new TelaCadastroAula();
