@@ -12,7 +12,8 @@ import easysurf.Tela.TelaAluno;
 import easysurf.Tela.TelaCadastroAluno;
 import easysurf.Tela.TelaCadastroAula;
 import easysurf.Tela.TelaPrincipal;
-
+import easysurf.Tela.TelaEdicaoAula;
+import easysurf.Tela.TelaEdicaoAluno;
 /**
  *
  * @author caroline
@@ -52,6 +53,14 @@ public class ControladorPrincipal {
     public void mostraTelaCadastroAula(String CPFAluno) {
         TelaCadastroAula.getInstance().setVisible(true);
         ControladorAula.getInstance().setCPFAluno(CPFAluno);
+    }
+    
+    public void mostraTelaEdicaoAula() {
+        TelaEdicaoAula.getInstance().setVisible(true);
+    }
+   
+    public void mostraTelaEdicaoAluno() {
+        TelaEdicaoAluno.getInstance().setVisible(true);
     }
     
     public void escondeTelaCadastroAula() {

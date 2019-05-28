@@ -10,6 +10,8 @@ package easysurf.Tela;
  * @author Caroline Ignácio
  */
 public class TelaEdicaoAluno extends javax.swing.JFrame {
+    
+    public static TelaEdicaoAluno instance;
 
     /**
      * Creates new form TelaEdicaoAluno
@@ -236,6 +238,14 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                 new TelaEdicaoAluno().setVisible(true);
             }
         });
+    }
+
+    
+    public static TelaEdicaoAluno getInstance() {
+        if (instance == null) {
+            return instance = new TelaEdicaoAluno();
+        }
+        return instance;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

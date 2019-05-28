@@ -28,7 +28,6 @@ public class TelaAluno extends javax.swing.JFrame {
     public TelaAluno() {
         initComponents();
         acoes();
-        loadTable();
     }
 
     /**
@@ -190,6 +189,11 @@ public class TelaAluno extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton2.setText("Nova Aula");
@@ -205,6 +209,11 @@ public class TelaAluno extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton4.setText("Deletar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -288,6 +297,15 @@ public class TelaAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControladorPrincipal.getInstance().mostraTelaEdicaoAula();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO: Usar o objeto aluno aqui
+        //ControladorEscola.getInstance().removeAluno(aluno);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -322,17 +340,7 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
     }
-    
-   void loadTable(){
-    ArrayList<Aluno> alunos;
-    alunos = ControladorEscola.getInstance().getListaAlunos();
-    DefaultTableModel tModelAlunos = new DefaultTableModel();
-    tModelAlunos.addRow(alunos.toArray());
-    
-    jTable1.setModel(tModelAlunos);
-
-   }
-   
+       
     public void acoes() {
         jButton2.addActionListener(new ActionListener() {
             @Override

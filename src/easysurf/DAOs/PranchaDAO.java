@@ -87,7 +87,7 @@ public class PranchaDAO implements Serializable {
         persist();
     }
 
-    public Prancha get(int id){
+    public Prancha get(String id){
         return cachePranchas.get(id);
     }
 

@@ -30,6 +30,7 @@ public class ControladorAula {
         return numeroAula;
     }
 
+    
     public void setNumeroAula() {
         this.numeroAula += AulaDAO.getInstancia().getMaiorNumero();
     }
@@ -38,7 +39,11 @@ public class ControladorAula {
         //Aula aula = new Aula(); //setar os parametros da aula
         //AulaDAO.getInstancia().put(aula);
     }
-    
+
+    public Aula getAulaPeloNumero(int numeroAula){
+        return AulaDAO.getInstancia().get(Integer.toString(numeroAula));
+    }
+
     public static ControladorAula getInstance() {
         if (instance == null) {
             return instance = new ControladorAula();
