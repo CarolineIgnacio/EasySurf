@@ -8,24 +8,24 @@ package easysurf.Controlador;
 import easysurf.DAOs.AlunoDAO;
 import easysurf.Entidade.Aluno;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
-import java.util.Vector;
 
 /**
  *
  * @author caroline
  */
 public class ControladorAluno {
-    
-    public static ControladorAluno instance;
-   
+
+    private static ControladorAluno instance;
+    private ArrayList<Aluno> alunos;
 
     public ControladorAluno() {
-        
+
     }
-    
+
     public boolean criaAluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
-        for (Aluno aluno: ControladorEscola.getInstance().getListaAlunos()) {
+        for (Aluno aluno : ControladorEscola.getInstance().getListaAlunos()) {
             if (aluno.getCPF().equals(CPF)) {
                 return false;
             }
@@ -41,13 +41,9 @@ public class ControladorAluno {
         }
         return instance;
     }
-    
-    public Vector getDadosDaTabela(){
-        Vector alunos = new Vector();
-        for (Aluno a: ControladorEscola.getInstance().getListaAlunos()){
-            alunos.add(new String[] {a.getNome(), "1", a.getCPF()});
 
-        }
+    public ArrayList<Aluno> getDadosDaTabela() {
+        alunos = ControladorEscola.getInstance().getListaAlunos();
         return alunos;
     }
     
@@ -55,5 +51,25 @@ public class ControladorAluno {
         Aluno aluno = AlunoDAO.getInstancia().get(CPFAluno);
         aluno.getAulas();
     }
-    
+
+    public void atualizaAluno(Aluno aluno){
+        removeAlunoCpf(aluno.getCPF());
+        ControladorEscola.getInstance().adicionaAluno(aluno);
+    }
+
+    public void removeAlunoCpf(String cpf) {
+        Aluno aluno = getAlunoCpf(cpf);
+        ControladorEscola.getInstance().removeAluno(aluno);
+    }
+
+    public Aluno getAlunoCpf(String cpf) {
+        getDadosDaTabela();
+        for (Aluno aluno : alunos) {
+            if (aluno.getCPF().equals(cpf)) {
+                return aluno;
+            }
+        }
+        return null;
+    }
+
 }

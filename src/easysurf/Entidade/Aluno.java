@@ -39,6 +39,7 @@ public class Aluno implements Serializable{
         this.nomeEmergencia = contatoEmergencia;
         this.relacaoEmergencia = relacaoEmergencia;
         this.telefoneEmergencia = telefoneContatoEmergencia;
+        this.nivel = 0;
     }
 
     public String getNome() {
@@ -107,7 +108,7 @@ public class Aluno implements Serializable{
     }
 
     public int getNivel() {
-        return nivel;
+        return this.nivel;
     }
 
     public void setNivel(int nivel) {
@@ -129,8 +130,6 @@ public class Aluno implements Serializable{
     public void setRelacaoEmergencia(String relacaoEmergencia) {
         this.relacaoEmergencia = relacaoEmergencia;
     }
-    
-    
-    
+      
     
 }

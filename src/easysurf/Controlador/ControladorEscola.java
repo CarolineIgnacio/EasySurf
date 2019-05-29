@@ -31,7 +31,10 @@ public class ControladorEscola {
     
     public void removeAluno(Aluno aluno) {
         AlunoDAO.getInstancia().remove(aluno);
-        
+    }
+    
+    public void removePrancha(Prancha prancha) {
+        PranchaDAO.getInstancia().remove(prancha);
     }
 
     

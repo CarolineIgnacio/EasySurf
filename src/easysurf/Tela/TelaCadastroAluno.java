@@ -299,6 +299,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                     jTextField3.setText("");
                     jTextField4.setText("");
                     jFormattedTextField4.setText("");
+                    TelaPrincipal.getInstance().loadTables();
                     ControladorPrincipal.getInstance().escondeTelaCadastroAluno(); 
                 }else{
                     JOptionPane.showMessageDialog(null, "Aluno já está cadastrado.");

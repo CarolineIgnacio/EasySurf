@@ -5,13 +5,22 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorAluno;
+import easysurf.Entidade.Aluno;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Caroline Ignácio
  */
 public class TelaEdicaoAluno extends javax.swing.JFrame {
-    
+
     public static TelaEdicaoAluno instance;
+    private Aluno aluno;
 
     /**
      * Creates new form TelaEdicaoAluno
@@ -58,6 +67,11 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -105,9 +119,19 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -205,6 +229,34 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        aluno.setNome(jTextField1.getText());
+        aluno.setRG(jTextField2.getText());
+        aluno.setTelefone(jFormattedTextField2.getText());
+        try {
+            aluno.setDataNascimento(formatador.parse(jFormattedTextField3.getText()));
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+            Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        aluno.setNomeEmergencia(jTextField3.getText());
+        aluno.setRelacaoEmergencia(jTextField4.getText());
+        aluno.setTelefoneEmergencia(jFormattedTextField4.getText());
+        
+        ControladorAluno.getInstance().atualizaAluno(aluno);
+        TelaPrincipal.getInstance().loadTables();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -240,12 +292,26 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         });
     }
 
-    
     public static TelaEdicaoAluno getInstance() {
         if (instance == null) {
             return instance = new TelaEdicaoAluno();
         }
         return instance;
+    }
+
+    public void iniciaTela(String cpf) {
+        aluno = ControladorAluno.getInstance().getAlunoCpf(cpf);
+        jLabel8.setText(aluno.getNome());
+        jTextField1.setText(aluno.getNome());
+        jTextField2.setText(aluno.getRG());
+        jFormattedTextField1.setText(aluno.getCPF());
+        jFormattedTextField2.setText(aluno.getTelefone());
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        jFormattedTextField3.setText(formatador.format(aluno.getDataNascimento()));
+        jTextField3.setText(aluno.getNomeEmergencia());
+        jTextField4.setText(aluno.getRelacaoEmergencia());
+        jFormattedTextField4.setText(aluno.getTelefoneEmergencia());
+        this.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

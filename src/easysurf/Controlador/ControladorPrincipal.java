@@ -11,6 +11,7 @@ import easysurf.Tela.TelaAcessoFuncionario;
 import easysurf.Tela.TelaAluno;
 import easysurf.Tela.TelaCadastroAluno;
 import easysurf.Tela.TelaCadastroAula;
+import easysurf.Tela.TelaCadastroPrancha;
 import easysurf.Tela.TelaPrincipal;
 import easysurf.Tela.TelaEdicaoAula;
 import easysurf.Tela.TelaEdicaoAluno;
@@ -48,6 +49,14 @@ public class ControladorPrincipal {
     
     public void escondeTelaCadastroAluno() {
         TelaCadastroAluno.getInstance().setVisible(false);
+    }
+    
+    public void mostraTelaCadastroPrancha() {
+        TelaCadastroPrancha.getInstance().setVisible(true);
+    }
+    
+    public void escondeTelaCadastroPrancha() {
+        TelaCadastroPrancha.getInstance().setVisible(false);
     }
     
     public void mostraTelaCadastroAula(String CPFAluno) {
