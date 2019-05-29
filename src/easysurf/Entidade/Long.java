@@ -13,12 +13,12 @@ import java.io.Serializable;
  */
 public class Long implements Serializable{
    
-    int tamanho;
-    String observacoes;
-    String cor;
-    String ID;
-    float preco;
-    float caucao;
+    private int tamanho;
+    private String observacoes;
+    private String cor;
+    private String ID;
+    private float preco;
+    private float caucao;
 
     public Long(int tamanho, String observacoes, String cor, float preco, float caucao) {
         this.tamanho = tamanho;
