@@ -21,13 +21,14 @@ public class ControladorAula {
 
     public static ControladorAula instance;
     private int numeroAula;
+    int count = 0;
 
     public int getNumeroAula() {
         return numeroAula;
     }
 
-    public void setNumeroAula() {
-        this.numeroAula += AulaDAO.getInstancia().getMaiorNumero();
+    public void setNumeroAula(int numeroAula) {
+        this.numeroAula = numeroAula;
     }
 
     public void criaAula(boolean ehPacote, boolean estaPago, String cpfAluno) {
@@ -35,6 +36,7 @@ public class ControladorAula {
         if (ehPacote) {
             for (int i = 0; i < 5; i++) {
                 Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
+                setNumeroAula(getNumeroAula() + 1);
                 if (estaPago) {
                     Date dataPagamento = new Date();
                     aula.setDataPagamento(dataPagamento);
@@ -43,11 +45,14 @@ public class ControladorAula {
             }
         } else {
             Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
+            setNumeroAula(getNumeroAula() + 1);
             if (estaPago) {
                 Date dataPagamento = new Date();
                 aula.setDataPagamento(dataPagamento);
+                System.out.println(aula.getDataPagamento());
             }
             AulaDAO.getInstancia().put(aula);
+            System.out.println(AulaDAO.getInstancia().get(getNumeroAula() - 1).getNumeroAula());
         }
     }
     
@@ -62,7 +67,7 @@ public class ControladorAula {
     }
 
     public Aula getAulaPeloNumero(int numeroAula) {
-        return AulaDAO.getInstancia().get(Integer.toString(numeroAula));
+        return AulaDAO.getInstancia().get(numeroAula);
     }
 
     public static ControladorAula getInstance() {

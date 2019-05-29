@@ -435,6 +435,7 @@ public class TelaAluno extends javax.swing.JFrame {
         DefaultTableModel tableModel = new DefaultTableModel(colunasAulas, 0);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         for (Aula aula : aulas) {
+            System.out.println("A data é: " + aula.getDataRealizacao());
             Date data = aula.getDataRealizacao();
             int nivel = aula.getNivel();
             String feita;

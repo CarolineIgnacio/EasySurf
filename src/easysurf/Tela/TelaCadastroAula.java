@@ -6,6 +6,7 @@
 package easysurf.Tela;
 
 import easysurf.Controlador.ControladorAula;
+import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,12 +19,15 @@ public class TelaCadastroAula extends javax.swing.JFrame {
 
     public static TelaCadastroAula instance;
     Aluno aluno;
+    boolean ehPacote = false;
+    boolean estaPago = false;
 
     /**
      * Creates new form TelaCadastroAula
      */
     public TelaCadastroAula() {
         initComponents();
+        acoes();
     }
 
     /**
@@ -147,8 +151,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ControladorAula.getInstance().criaAula(jCheckBox1.isSelected(), jCheckBox2.isSelected(), aluno.getCPF());
-        this.setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
@@ -189,29 +192,38 @@ public class TelaCadastroAula extends javax.swing.JFrame {
             }
         });
     }
-//
-//    public void acoes() {
-//        jButton1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (jCheckBox1.isSelected()) {
-//                    ehPacote = true;
-//                } else {
-//                    ehPacote = false;
-//                }
-//                
-//                if(jCheckBox2.isSelected()) {
-//                    estaPago = true;
-//                }else {
-//                    estaPago = false;
-//                }
-//                
-//                ControladorAula.getInstance().criaAula(ehPacote, estaPago, cpfAluno);
-//            }
-//        });
-//        ehPacote = false;
-//        estaPago = false;
-//    }
+
+    public void acoes() {
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jCheckBox1.isSelected()) {
+                    ehPacote = true;
+                } else {
+                    ehPacote = false;
+               }
+                
+                if(jCheckBox2.isSelected()) {
+                    estaPago = true;
+                }else {
+                    estaPago = false;
+                }
+                
+                ControladorAula.getInstance().criaAula(ehPacote, estaPago, aluno.getCPF());
+                ControladorPrincipal.getInstance().escondeTelaCadastroAula();
+            }
+        });
+        jButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ControladorPrincipal.getInstance().escondeTelaCadastroAula();
+            }
+        });
+        ehPacote = false;
+        estaPago = false;
+    }
+    
+    
 
     public static TelaCadastroAula getInstance() {
         if (instance == null) {
