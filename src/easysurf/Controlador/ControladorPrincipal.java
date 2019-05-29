@@ -26,7 +26,7 @@ import easysurf.Tela.TelaPrancha;
  */
 public class ControladorPrincipal {
     
-    public static ControladorPrincipal instance;
+    private static ControladorPrincipal instance;
     
     public ControladorPrincipal() {
         
