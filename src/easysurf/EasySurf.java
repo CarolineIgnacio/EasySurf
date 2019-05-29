@@ -5,7 +5,7 @@
  */
 package easysurf;
 
-import easysurf.Controlador.ControladorFuncionario;
+import easysurf.Controlador.ControladorEscola;
 import easysurf.Controlador.ControladorPrincipal;
 
 /**
@@ -19,7 +19,7 @@ public class EasySurf {
      */
     public static void main(String[] args) {
         
-        ControladorFuncionario.getInstance().criaFuncionario("1234");
+        ControladorEscola.getInstance().criaEscola("1234");
         ControladorPrincipal.getInstance().mostraTelaAcesso();
     }
     

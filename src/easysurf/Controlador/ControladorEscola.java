@@ -8,6 +8,7 @@ package easysurf.Controlador;
 import easysurf.DAOs.AlunoDAO;
 import easysurf.DAOs.PranchaDAO;
 import easysurf.Entidade.Aluno;
+import easysurf.Entidade.Escola;
 import easysurf.Entidade.Prancha;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +20,7 @@ import java.util.Collection;
 public class ControladorEscola {
     
     private static ControladorEscola instance;
+    Escola escola;
     
     public void adicionaAluno(Aluno aluno) {
         AlunoDAO.getInstancia().put(aluno);
@@ -50,8 +52,18 @@ public class ControladorEscola {
         return pranchas;
     }
 
-   
+    public boolean senhaCorreta(String senhaFuncionario) {
+        String senha = escola.getSenha();
+        if (senhaFuncionario.equals(senha)) {
+            return true;
+        }
+        return false;
+    }
 
+    public void criaEscola(String senha) {
+        escola = new Escola(senha);
+    }
+    
     public static ControladorEscola getInstance() {
         if (instance == null) {
             return instance = new ControladorEscola();
