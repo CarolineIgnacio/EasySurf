@@ -5,6 +5,7 @@
  */
 package easysurf.Controlador;
 
+import easysurf.DAOs.AlunoDAO;
 import easysurf.Entidade.Aluno;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,6 +49,11 @@ public class ControladorAluno {
 
         }
         return alunos;
+    }
+    
+    public void getAulas(String CPFAluno) {
+        Aluno aluno = AlunoDAO.getInstancia().get(CPFAluno);
+        aluno.getAulas();
     }
     
 }

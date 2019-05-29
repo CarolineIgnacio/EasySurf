@@ -5,7 +5,9 @@
  */
 package easysurf.Controlador;
 
+import easysurf.DAOs.AlunoDAO;
 import easysurf.DAOs.AulaDAO;
+import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Aula;
 import java.util.Date;
 
@@ -32,17 +34,17 @@ public class ControladorAula {
         return numeroAula;
     }
 
-    
     public void setNumeroAula() {
         this.numeroAula += AulaDAO.getInstancia().getMaiorNumero();
     }
 
     public void criaAula(boolean ehPacote, boolean estaPago) {
         String cpfAluno = getCPFAluno();
-        int size = AulaDAO.getInstancia().getAulaPorCPF(cpfAluno).size();
+        Aluno aluno = AlunoDAO.getInstancia().get(cpfAluno);
+        int aulasFeitas = aluno.getAulasFeitas();
         if (ehPacote) {
             for (int i = 0; i < 5; i++) {
-                verificaNivel(size);
+                verificaNivel(aulasFeitas);
                 Aula aula = new Aula(nivelAluno, ehPacote, estaPago, getNumeroAula(), getCPFAluno());
                 if (estaPago) {
                     Date dataPagamento = new Date();
@@ -51,7 +53,7 @@ public class ControladorAula {
                 AulaDAO.getInstancia().put(aula);
             }
         } else {
-            verificaNivel(size);
+            verificaNivel(aulasFeitas);
             Aula aula = new Aula(nivelAluno, ehPacote, estaPago, getNumeroAula(), getCPFAluno());
             if (estaPago) {
                 Date dataPagamento = new Date();
@@ -62,17 +64,17 @@ public class ControladorAula {
         nivelAluno = 0;
     }
 
-    public void verificaNivel(int size) {
-        if (size <= 4) {
+    public void verificaNivel(int aulasFeitas) {
+        if (aulasFeitas < 5) {
             nivelAluno = 1;
-        } else if (size >= 4 & size <= 9) {
+        } else if (aulasFeitas > 5 & aulasFeitas < 10) {
             nivelAluno = 2;
         } else {
             nivelAluno = 3;
         }
     }
 
-    public Aula getAulaPeloNumero(int numeroAula){
+    public Aula getAulaPeloNumero(int numeroAula) {
         return AulaDAO.getInstancia().get(Integer.toString(numeroAula));
     }
 

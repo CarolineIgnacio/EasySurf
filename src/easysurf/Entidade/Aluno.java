@@ -23,11 +23,12 @@ public class Aluno implements Serializable{
     String CPF;
     String telefone;
     int nivel;
+    int aulasFeitas;
     Date dataNascimento;
     String nomeEmergencia;
     String relacaoEmergencia;
     String telefoneEmergencia;
-    ArrayList<Aula> aulas; //Mudar para persistência depois.
+    ArrayList<Aula> aulas; 
 
     public Aluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
         this.nome = nome;
@@ -104,6 +105,31 @@ public class Aluno implements Serializable{
     public void setAulas(ArrayList<Aula> aulas) {
         this.aulas = aulas;
     }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getAulasFeitas() {
+        return aulasFeitas;
+    }
+
+    public void setAulasFeitas() {
+        this.aulasFeitas ++;
+    }
+
+    public String getRelacaoEmergencia() {
+        return relacaoEmergencia;
+    }
+
+    public void setRelacaoEmergencia(String relacaoEmergencia) {
+        this.relacaoEmergencia = relacaoEmergencia;
+    }
+    
     
     
     
