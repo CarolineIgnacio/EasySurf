@@ -49,10 +49,11 @@ public class ControladorAula {
             if (estaPago) {
                 Date dataPagamento = new Date();
                 aula.setDataPagamento(dataPagamento);
-                System.out.println(aula.getDataPagamento());
             }
             AulaDAO.getInstancia().put(aula);
-            System.out.println(AulaDAO.getInstancia().get(getNumeroAula() - 1).getNumeroAula());
+            System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
+            System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
+            //System.out.println(aula.getDataPagamento());
         }
     }
     

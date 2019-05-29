@@ -99,6 +99,7 @@ public class Aluno implements Serializable{
     }
 
     public ArrayList<Aula> getAulas() {
+        System.out.println(getCPF());
         return AulaDAO.getInstancia().getAulaPorCPF(getCPF());
     }
 
