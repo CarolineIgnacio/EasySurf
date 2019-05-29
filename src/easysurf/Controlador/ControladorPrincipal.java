@@ -7,6 +7,9 @@ package easysurf.Controlador;
 
 import easysurf.DAOs.AlunoDAO;
 import easysurf.DAOs.PranchaDAO;
+import easysurf.Entidade.Aluno;
+import easysurf.Entidade.Aula;
+import easysurf.Entidade.Prancha;
 import easysurf.Tela.TelaAcessoFuncionario;
 import easysurf.Tela.TelaAluno;
 import easysurf.Tela.TelaCadastroAluno;
@@ -15,6 +18,8 @@ import easysurf.Tela.TelaCadastroPrancha;
 import easysurf.Tela.TelaPrincipal;
 import easysurf.Tela.TelaEdicaoAula;
 import easysurf.Tela.TelaEdicaoAluno;
+import easysurf.Tela.TelaEdicaoPrancha;
+import easysurf.Tela.TelaPrancha;
 /**
  *
  * @author caroline
@@ -55,21 +60,33 @@ public class ControladorPrincipal {
         TelaCadastroPrancha.getInstance().setVisible(true);
     }
     
+    public void mostraTelaEdicaoPrancha(String id) {
+        Prancha prancha = ControladorPrancha.getInstance().getPranchaCodigo(id);
+        TelaEdicaoPrancha.getInstance().iniciaTela(prancha);
+    }
+     
+    public void mostraTelaPrancha(String id) {
+        Prancha prancha = ControladorPrancha.getInstance().getPranchaCodigo(id);
+        TelaPrancha.getInstance().iniciaTela(prancha);
+    }
+    
     public void escondeTelaCadastroPrancha() {
         TelaCadastroPrancha.getInstance().setVisible(false);
     }
     
-    public void mostraTelaCadastroAula(String CPFAluno) {
-        TelaCadastroAula.getInstance().setVisible(true);
-        ControladorAula.getInstance().setCPFAluno(CPFAluno);
+    public void mostraTelaCadastroAula(String CPF) {
+        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(CPF);
+        TelaCadastroAula.getInstance().iniciaTela(aluno);
     }
     
-    public void mostraTelaEdicaoAula() {
-        TelaEdicaoAula.getInstance().setVisible(true);
+    public void mostraTelaEdicaoAula(int nrAula, Aluno aluno) {
+        Aula aula = ControladorAula.getInstance().getAulaPeloNumero(nrAula);
+        TelaEdicaoAula.getInstance().iniciaTela(aula, aluno);
     }
    
-    public void mostraTelaEdicaoAluno() {
-        TelaEdicaoAluno.getInstance().setVisible(true);
+    public void mostraTelaEdicaoAluno(String CPF) {
+        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(CPF);
+        TelaEdicaoAluno.getInstance().iniciaTela(aluno);
     }
     
     public void escondeTelaCadastroAula() {
@@ -77,8 +94,8 @@ public class ControladorPrincipal {
     }
     
     public void mostraTelaAluno(String CPF) {
-        TelaAluno.getInstance().setCPF(CPF);
-        TelaAluno.getInstance().setVisible(true);
+        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(CPF);
+        TelaAluno.getInstance().iniciaTela(aluno);
     }
     
     public void escondeTelaAluno() {

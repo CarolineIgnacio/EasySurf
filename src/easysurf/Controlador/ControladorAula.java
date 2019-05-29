@@ -7,8 +7,10 @@ package easysurf.Controlador;
 
 import easysurf.DAOs.AlunoDAO;
 import easysurf.DAOs.AulaDAO;
+import easysurf.DAOs.PranchaDAO;
 import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Aula;
+import easysurf.Entidade.Prancha;
 import java.util.Date;
 
 /**
@@ -18,17 +20,7 @@ import java.util.Date;
 public class ControladorAula {
 
     public static ControladorAula instance;
-    private String CPFAluno;
     private int numeroAula;
-    private int nivelAluno;
-
-    public String getCPFAluno() {
-        return CPFAluno;
-    }
-
-    public void setCPFAluno(String CPFAluno) {
-        this.CPFAluno = CPFAluno;
-    }
 
     public int getNumeroAula() {
         return numeroAula;
@@ -38,14 +30,11 @@ public class ControladorAula {
         this.numeroAula += AulaDAO.getInstancia().getMaiorNumero();
     }
 
-    public void criaAula(boolean ehPacote, boolean estaPago) {
-        String cpfAluno = getCPFAluno();
-        Aluno aluno = AlunoDAO.getInstancia().get(cpfAluno);
-        int aulasFeitas = aluno.getAulasFeitas();
+    public void criaAula(boolean ehPacote, boolean estaPago, String cpfAluno) {
+        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(cpfAluno);
         if (ehPacote) {
             for (int i = 0; i < 5; i++) {
-                verificaNivel(aulasFeitas);
-                Aula aula = new Aula(nivelAluno, ehPacote, estaPago, getNumeroAula(), getCPFAluno());
+                Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
                 if (estaPago) {
                     Date dataPagamento = new Date();
                     aula.setDataPagamento(dataPagamento);
@@ -53,25 +42,23 @@ public class ControladorAula {
                 AulaDAO.getInstancia().put(aula);
             }
         } else {
-            verificaNivel(aulasFeitas);
-            Aula aula = new Aula(nivelAluno, ehPacote, estaPago, getNumeroAula(), getCPFAluno());
+            Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
             if (estaPago) {
                 Date dataPagamento = new Date();
                 aula.setDataPagamento(dataPagamento);
             }
             AulaDAO.getInstancia().put(aula);
         }
-        nivelAluno = 0;
     }
-
-    public void verificaNivel(int aulasFeitas) {
-        if (aulasFeitas < 5) {
-            nivelAluno = 1;
-        } else if (aulasFeitas > 5 & aulasFeitas < 10) {
-            nivelAluno = 2;
-        } else {
-            nivelAluno = 3;
-        }
+    
+    public void editaAula(Aluno aluno, String prancha, Date dataRealizacao, boolean pago, Date datapagto, Aula aula)
+    {
+        Prancha objPrancha = PranchaDAO.getInstancia().get(prancha);
+        aula.setDataPagamento(datapagto);
+        aula.setPrancha(objPrancha);
+        aula.setDataRealizacao(dataRealizacao);
+        aula.setPagamentoRealizado(pago);
+        AulaDAO.getInstancia().put(aula);
     }
 
     public Aula getAulaPeloNumero(int numeroAula) {

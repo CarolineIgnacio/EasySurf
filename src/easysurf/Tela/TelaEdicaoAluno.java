@@ -56,8 +56,8 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBsalvar = new javax.swing.JButton();
+        jBvoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,19 +117,19 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel8.setText("Nome do aluno");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBsalvar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jBsalvar.setText("Salvar");
+        jBsalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBsalvarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBvoltar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jBvoltar.setText("Voltar");
+        jBvoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBvoltarActionPerformed(evt);
             }
         });
 
@@ -160,9 +160,9 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                     .addComponent(jFormattedTextField3)
                     .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jBsalvar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(jBvoltar)))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -204,8 +204,8 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                     .addComponent(jFormattedTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBsalvar)
+                    .addComponent(jBvoltar))
                 .addContainerGap())
         );
 
@@ -229,11 +229,11 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvoltarActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBvoltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         aluno.setNome(jTextField1.getText());
         aluno.setRG(jTextField2.getText());
@@ -251,7 +251,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         ControladorAluno.getInstance().atualizaAluno(aluno);
         TelaPrincipal.getInstance().loadTables();
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBsalvarActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
@@ -299,8 +299,8 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         return instance;
     }
 
-    public void iniciaTela(String cpf) {
-        aluno = ControladorAluno.getInstance().getAlunoCpf(cpf);
+    public void iniciaTela(Aluno aluno) {
+        this.aluno = aluno;
         jLabel8.setText(aluno.getNome());
         jTextField1.setText(aluno.getNome());
         jTextField2.setText(aluno.getRG());
@@ -315,8 +315,8 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBsalvar;
+    private javax.swing.JButton jBvoltar;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;

@@ -6,6 +6,7 @@
 package easysurf.Tela;
 
 import easysurf.Controlador.ControladorAula;
+import easysurf.Entidade.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,8 +17,7 @@ import java.awt.event.ActionListener;
 public class TelaCadastroAula extends javax.swing.JFrame {
 
     public static TelaCadastroAula instance;
-    boolean ehPacote = false;
-    boolean estaPago = false;
+    Aluno aluno;
 
     /**
      * Creates new form TelaCadastroAula
@@ -36,17 +36,18 @@ public class TelaCadastroAula extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLnome = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLnivel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel1.setText("Nome do Aluno");
+        jLnome.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLnome.setText("Nome do Aluno");
 
         jCheckBox1.setText("Pacote");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -56,12 +57,24 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         });
 
         jCheckBox2.setText("Pagou");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nível:");
 
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Voltar");
+
+        jLnivel.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -75,7 +88,9 @@ public class TelaCadastroAula extends javax.swing.JFrame {
                         .addComponent(jCheckBox1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
-                .addGap(93, 93, 93))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLnivel)
+                .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -85,18 +100,19 @@ public class TelaCadastroAula extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLnome)))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
+                .addComponent(jLnome)
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLnivel))
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox2)
                 .addGap(18, 18, 18)
@@ -127,8 +143,17 @@ public class TelaCadastroAula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ControladorAula.getInstance().criaAula(jCheckBox1.isSelected(), jCheckBox2.isSelected(), aluno.getCPF());
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,29 +189,29 @@ public class TelaCadastroAula extends javax.swing.JFrame {
             }
         });
     }
-
-    public void acoes() {
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jCheckBox1.isSelected()) {
-                    ehPacote = true;
-                } else {
-                    ehPacote = false;
-                }
-                
-                if(jCheckBox2.isSelected()) {
-                    estaPago = true;
-                }else {
-                    estaPago = false;
-                }
-                
-                ControladorAula.getInstance().criaAula(ehPacote, estaPago);
-            }
-        });
-        ehPacote = false;
-        estaPago = false;
-    }
+//
+//    public void acoes() {
+//        jButton1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                if (jCheckBox1.isSelected()) {
+//                    ehPacote = true;
+//                } else {
+//                    ehPacote = false;
+//                }
+//                
+//                if(jCheckBox2.isSelected()) {
+//                    estaPago = true;
+//                }else {
+//                    estaPago = false;
+//                }
+//                
+//                ControladorAula.getInstance().criaAula(ehPacote, estaPago, cpfAluno);
+//            }
+//        });
+//        ehPacote = false;
+//        estaPago = false;
+//    }
 
     public static TelaCadastroAula getInstance() {
         if (instance == null) {
@@ -194,14 +219,22 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         }
         return instance;
     }
+    
+     public void iniciaTela(Aluno aluno) {
+        this.aluno = aluno;
+        jLnome.setText(aluno.getNome());
+        jLnivel.setText(String.valueOf(aluno.getNivel()));
+        this.setVisible(true);
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLnivel;
+    private javax.swing.JLabel jLnome;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

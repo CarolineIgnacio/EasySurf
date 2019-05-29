@@ -163,9 +163,9 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTtamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jCheckBox1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -221,6 +221,7 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         prancha.setDisponivel(!alugada);
         prancha.setObservacoes(observacao);
         prancha.setModelo(modelo);
+        prancha.setTamanho(tamanho);
         
         ControladorPrancha.getInstance().atualizaPrancha(prancha);
         TelaPrincipal.getInstance().loadTables();
@@ -275,8 +276,8 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         return instance;
     }
 
-    public void iniciaTela(String codigo) {
-        prancha = ControladorPrancha.getInstance().getPranchaCodigo(codigo);
+    public void iniciaTela(Prancha prancha) {
+        this.prancha = prancha;
         jTcodigo.setText(prancha.getCodigo());
         jTmodelo.setText(prancha.getModelo());
         jTtamanho.setText(Float.toString(prancha.getTamanho()));

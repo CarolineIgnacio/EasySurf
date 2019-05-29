@@ -121,6 +121,14 @@ public class Aluno implements Serializable{
 
     public void setAulasFeitas() {
         this.aulasFeitas ++;
+        if (this.aulasFeitas > 5 && this.aulasFeitas <10){
+            this.nivel = 2;
+        }
+        if (this.aulasFeitas > 10){
+            this.nivel = 3;
+        }
+        else{this.nivel = 1;}
+        
     }
 
     public String getRelacaoEmergencia() {

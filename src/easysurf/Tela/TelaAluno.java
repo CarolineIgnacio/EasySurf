@@ -5,12 +5,20 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorAluno;
 import easysurf.Controlador.ControladorEscola;
 import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
+import easysurf.Entidade.Aula;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,13 +29,15 @@ public class TelaAluno extends javax.swing.JFrame {
     
     public static TelaAluno instance;
     private String CPF;
-
+    private Aluno aluno;
+    ArrayList<Aula> aulas;
+    
     /**
      * Creates new form TelaAluno
      */
     public TelaAluno() {
         initComponents();
-        acoes();
+        listener();
     }
 
     /**
@@ -44,14 +54,20 @@ public class TelaAluno extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLnivel = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLnomealuno = new javax.swing.JLabel();
+        jLtelefone = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLcontato = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLrelacao = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLcontatoTel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,9 +199,12 @@ public class TelaAluno extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
-
-        jScrollPane2.setViewportView(jTextPane1);
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Editar");
@@ -197,15 +216,25 @@ public class TelaAluno extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton2.setText("Nova Aula");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Nível:");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setText("1");
+        jLnivel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLnivel.setText("1");
 
         jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton3.setText("Voltar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton4.setText("Deletar");
@@ -215,6 +244,22 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
 
+        jLnomealuno.setText("jLabel2");
+
+        jLtelefone.setText("jLabel2");
+
+        jLabel2.setText("Nome contato:");
+
+        jLcontato.setText("jLabel4");
+
+        jLabel6.setText("Relação:");
+
+        jLrelacao.setText("jLabel7");
+
+        jLabel8.setText("Telefone:");
+
+        jLcontatoTel.setText("jLabel9");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -222,17 +267,16 @@ public class TelaAluno extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(174, 174, 174)
-                                .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLnomealuno)
+                                .addGap(107, 107, 107)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLtelefone))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -244,9 +288,26 @@ public class TelaAluno extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                                 .addComponent(jLabel5)
-                                                .addComponent(jLabel6))
+                                                .addComponent(jLnivel))
                                             .addGap(26, 26, 26))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLcontato))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(41, 41, 41)
+                                .addComponent(jLcontatoTel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addComponent(jLabel6)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLrelacao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,19 +323,33 @@ public class TelaAluno extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
+                        .addComponent(jLnivel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jLnomealuno)
+                            .addComponent(jLtelefone))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLcontato))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLcontatoTel)
+                            .addComponent(jLabel6)
+                            .addComponent(jLrelacao))
+                        .addContainerGap(30, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -298,13 +373,27 @@ public class TelaAluno extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ControladorPrincipal.getInstance().mostraTelaEdicaoAula();
+        ControladorPrincipal.getInstance().mostraTelaEdicaoAluno(aluno.getCPF());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO: Usar o objeto aluno aqui
-        //ControladorEscola.getInstance().removeAluno(aluno);
+       ControladorEscola.getInstance().removeAluno(aluno);
+       limpaTela();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        limpaTela();
+        ControladorPrincipal.getInstance().mostraTelaPrincipal();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ControladorPrincipal.getInstance().mostraTelaCadastroAula(aluno.getCPF());
+        loadTables();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,22 +429,39 @@ public class TelaAluno extends javax.swing.JFrame {
             }
         });
     }
-       
-    public void acoes() {
-        jButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {             
-                ControladorPrincipal.getInstance().mostraTelaCadastroAula(CPF);
+           
+    void loadTables() {
+        String[] colunasAulas = new String[]{"Data", "Nivel", "Status", "ID"};
+        DefaultTableModel tableModel = new DefaultTableModel(colunasAulas, 0);
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        for (Aula aula : aulas) {
+            Date data = aula.getDataRealizacao();
+            int nivel = aula.getNivel();
+            String feita;
+            if(aula.isRealizada()){
+                feita = "Realizada";
+            }else{
+                feita = "Não Realizada";
+            }
+            int id = aula.getNumeroAula();
+            Object[] dataAula = {data, nivel, feita, id};
+            tableModel.addRow(dataAula);
+            
+        }
+        jTable1.setModel(tableModel);
+    }
+
+    public void listener(){
+            jTable1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table = (JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+                    ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)jTable1.getValueAt(row, 3), aluno);  ///Manter essa linha, pro resto funfarr 
+                }
             }
         });
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
     }
     
     public static TelaAluno getInstance() {
@@ -365,6 +471,28 @@ public class TelaAluno extends javax.swing.JFrame {
         return instance;
     }
     
+     public void limpaTela() {
+        jLnomealuno.setText("");
+        jLtelefone.setText("");
+        jLnivel.setText("");      
+        jLcontato.setText("");
+        jLcontatoTel.setText("");
+        jLrelacao.setText("");
+        this.setVisible(false);
+    }
+    
+     public void iniciaTela(Aluno aluno) {
+        this.aluno = aluno;
+        this.aulas = aluno.getAulas();
+        jLnomealuno.setText(aluno.getNome());
+        jLtelefone.setText(aluno.getTelefone());
+        jLnivel.setText(String.valueOf(aluno.getNivel()));      
+        jLcontato.setText(aluno.getNomeEmergencia());
+        jLcontatoTel.setText(aluno.getTelefoneEmergencia());
+        jLrelacao.setText(aluno.getRelacaoEmergencia());
+        loadTables();
+        this.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -372,13 +500,19 @@ public class TelaAluno extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLcontato;
+    private javax.swing.JLabel jLcontatoTel;
+    private javax.swing.JLabel jLnivel;
+    private javax.swing.JLabel jLnomealuno;
+    private javax.swing.JLabel jLrelacao;
+    private javax.swing.JLabel jLtelefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

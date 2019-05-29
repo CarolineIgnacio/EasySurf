@@ -63,13 +63,7 @@ public class ControladorAluno {
     }
 
     public Aluno getAlunoCpf(String cpf) {
-        getDadosDaTabela();
-        for (Aluno aluno : alunos) {
-            if (aluno.getCPF().equals(cpf)) {
-                return aluno;
-            }
-        }
-        return null;
+        return ControladorPrincipal.getDaoAluno().get(cpf);
     }
 
 }

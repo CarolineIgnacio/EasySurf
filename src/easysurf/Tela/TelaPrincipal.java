@@ -464,7 +464,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                    TelaEdicaoAluno.getInstance().iniciaTela((String)jTable3.getValueAt(row, 1));
+                    ControladorPrincipal.getInstance().mostraTelaAluno((String)jTable3.getValueAt(row, 1));
                 }
             }
         });
@@ -476,7 +476,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 int row = table.rowAtPoint(point);
                 int column = table.columnAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column<3) {
-                    TelaEdicaoPrancha.getInstance().iniciaTela((String)jTable2.getValueAt(row, 0));;
+                    ControladorPrincipal.getInstance().mostraTelaPrancha((String)jTable2.getValueAt(row, 0));;
                 }
             }
         });

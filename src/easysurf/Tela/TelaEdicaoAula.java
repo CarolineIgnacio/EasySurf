@@ -5,6 +5,15 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorAula;
+import easysurf.Controlador.ControladorPrancha;
+import easysurf.Entidade.Aluno;
+import easysurf.Entidade.Aula;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author trust
@@ -12,6 +21,9 @@ package easysurf.Tela;
 public class TelaEdicaoAula extends javax.swing.JFrame {
 
     public static TelaEdicaoAula instance;
+    private static Aluno aluno;
+    private static Aula aula;
+    
     /**
      * Creates new form TelaEdicaoAula
      */
@@ -31,18 +43,18 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButtonSave = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLnome = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jcheckPago = new javax.swing.JCheckBox();
+        jCpago = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
-        jFieldDataPagamento = new javax.swing.JFormattedTextField();
+        jFdatapagto = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLnivel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jFieldDataRealizacao = new javax.swing.JFormattedTextField();
-        jFieldPranchaID = new javax.swing.JFormattedTextField();
+        jFdatarealizada = new javax.swing.JFormattedTextField();
+        jFid = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,22 +68,22 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nome do Aluno");
+        jLnome.setText("Nome do Aluno");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
-        jcheckPago.setText("Aula Paga");
-        jcheckPago.addActionListener(new java.awt.event.ActionListener() {
+        jCpago.setText("Aula Paga");
+        jCpago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcheckPagoActionPerformed(evt);
+                jCpagoActionPerformed(evt);
             }
         });
 
         jLabel2.setText("em");
 
-        jFieldDataPagamento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFieldDataPagamento.setText("Data do Pagto");
-        jFieldDataPagamento.setToolTipText("");
+        jFdatapagto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFdatapagto.setText("Data do Pagto");
+        jFdatapagto.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -79,11 +91,11 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jcheckPago)
+                .addComponent(jCpago)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFieldDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFdatapagto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -91,9 +103,9 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcheckPago)
+                    .addComponent(jCpago)
                     .addComponent(jLabel2)
-                    .addComponent(jFieldDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFdatapagto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -101,20 +113,20 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
 
         jLabel3.setText("Data de Realização");
 
-        jLabel4.setText("Nr");
+        jLnivel.setText("Nr");
 
         jLabel5.setText("Nível");
 
         jLabel6.setText("Prancha ID");
 
-        jFieldDataRealizacao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFieldDataRealizacao.setText("Data da Realizaçao");
+        jFdatarealizada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFdatarealizada.setText("Data da Realizaçao");
 
-        jFieldPranchaID.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFieldPranchaID.setToolTipText("ID da prancha");
-        jFieldPranchaID.addActionListener(new java.awt.event.ActionListener() {
+        jFid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jFid.setToolTipText("ID da prancha");
+        jFid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFieldPranchaIDActionPerformed(evt);
+                jFidActionPerformed(evt);
             }
         });
 
@@ -132,11 +144,11 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel4)
-                            .addComponent(jFieldDataRealizacao, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                            .addComponent(jLnivel)
+                            .addComponent(jFdatarealizada, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFieldPranchaID, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jFid, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -145,15 +157,15 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(jFieldDataRealizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFdatarealizada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jFieldPranchaID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLnivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -168,14 +180,14 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1)
+            .addComponent(jLnome)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel1)
+                .addComponent(jLnome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -205,18 +217,31 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        String dataRealizacao = jFieldDataRealizacao.getText();
-        String Prancha = jFieldPranchaID.getText();
-        
+        try{
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            Date dataRealizacao = formatador.parse(jFdatarealizada.getText());
+            String prancha = jFid.getText();
+            boolean pagou = jCpago.isSelected();
+            Date datapagto = formatador.parse(jFdatapagto.getText());
+            if (ControladorPrancha.getInstance().pranchaExiste(prancha)){
+                ControladorAula.getInstance().editaAula(aluno, prancha, dataRealizacao, pagou, datapagto, aula);
+                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!"); 
+            } 
+            else{ JOptionPane.showMessageDialog(null, "ID da prancha não existe!");}
+        }
+        catch (ParseException ex) 
+         {
+             JOptionPane.showMessageDialog(null, "Erro de parse!");
+         }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
-    private void jcheckPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckPagoActionPerformed
+    private void jCpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpagoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcheckPagoActionPerformed
+    }//GEN-LAST:event_jCpagoActionPerformed
 
-    private void jFieldPranchaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFieldPranchaIDActionPerformed
+    private void jFidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFieldPranchaIDActionPerformed
+    }//GEN-LAST:event_jFidActionPerformed
 
     public static TelaEdicaoAula getInstance() {
         if (instance == null) {
@@ -224,6 +249,20 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         }
         return instance;
     }
+    
+    public void iniciaTela(Aula aula, Aluno aluno){
+        this.aluno = aluno;
+        this.aula = aula;
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        jLnome.setText(aluno.getNome());
+        jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));
+        jFid.setText(aula.getPrancha().getID());
+        jLnivel.setText(String.valueOf(aluno.getNivel()));
+        jCpago.setSelected(aula.isPagamentoRealizado());
+        jFdatapagto.setText(formatador.format(aula.getDataPagamento()));
+        this.setVisible(true);
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -263,18 +302,18 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSave;
-    private javax.swing.JFormattedTextField jFieldDataPagamento;
-    private javax.swing.JFormattedTextField jFieldDataRealizacao;
-    private javax.swing.JFormattedTextField jFieldPranchaID;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox jCpago;
+    private javax.swing.JFormattedTextField jFdatapagto;
+    private javax.swing.JFormattedTextField jFdatarealizada;
+    private javax.swing.JFormattedTextField jFid;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLnivel;
+    private javax.swing.JLabel jLnome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JCheckBox jcheckPago;
     // End of variables declaration//GEN-END:variables
 }

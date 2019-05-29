@@ -50,7 +50,7 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               </Group>
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jLnome" min="-2" max="-2" attributes="0"/>
               <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -58,7 +58,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLnome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLnome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome do Aluno"/>
           </Properties>
@@ -107,11 +107,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jcheckPago" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCpago" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jFieldDataPagamento" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="jFdatapagto" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -121,9 +121,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcheckPago" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCpago" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFieldDataPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFdatapagto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
@@ -131,12 +131,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JCheckBox" name="jcheckPago">
+            <Component class="javax.swing.JCheckBox" name="jCpago">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aula Paga"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcheckPagoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCpagoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -144,7 +144,7 @@
                 <Property name="text" type="java.lang.String" value="em"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFieldDataPagamento">
+            <Component class="javax.swing.JFormattedTextField" name="jFdatapagto">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format subtype="0" type="1"/>
@@ -178,13 +178,13 @@
                           <Group type="102" attributes="0">
                               <EmptySpace pref="63" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="jLabel4" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFieldDataRealizacao" alignment="2" pref="140" max="32767" attributes="0"/>
+                                  <Component id="jLnivel" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFdatarealizada" alignment="2" pref="140" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jFieldPranchaID" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="jFid" min="-2" pref="140" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -197,17 +197,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="jLabel3" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFieldDataRealizacao" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFdatarealizada" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jFieldPranchaID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFid" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="jLabel5" alignment="2" max="32767" attributes="0"/>
-                          <Component id="jLabel4" alignment="2" max="32767" attributes="0"/>
+                          <Component id="jLnivel" alignment="2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -220,7 +220,7 @@
                 <Property name="text" type="java.lang.String" value="Data de Realiza&#xe7;&#xe3;o"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jLnivel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nr"/>
               </Properties>
@@ -235,7 +235,7 @@
                 <Property name="text" type="java.lang.String" value="Prancha ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFieldDataRealizacao">
+            <Component class="javax.swing.JFormattedTextField" name="jFdatarealizada">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format subtype="0" type="1"/>
@@ -243,7 +243,7 @@
                 <Property name="text" type="java.lang.String" value="Data da Realiza&#xe7;ao"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFieldPranchaID">
+            <Component class="javax.swing.JFormattedTextField" name="jFid">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                   <Format subtype="0" type="1"/>
@@ -251,7 +251,7 @@
                 <Property name="toolTipText" type="java.lang.String" value="ID da prancha"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFieldPranchaIDActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFidActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
