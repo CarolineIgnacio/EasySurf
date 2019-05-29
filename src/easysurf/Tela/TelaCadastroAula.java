@@ -77,6 +77,11 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         });
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLnivel.setText("jLabel3");
 
@@ -158,6 +163,10 @@ public class TelaCadastroAula extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       limpaTela();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -192,6 +201,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
             }
         });
     }
+
 
     public void acoes() {
         jButton1.addActionListener(new ActionListener() {
@@ -238,6 +248,15 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         this.setVisible(true);
         }
+     
+     public void limpaTela(){
+        this.aluno = null;
+        jLnome.setText("");
+        jLnivel.setText("");
+        jCheckBox1.setSelected(false);
+        jCheckBox2.setSelected(false);
+        this.setVisible(false);
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

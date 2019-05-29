@@ -388,7 +388,7 @@ public class TelaAluno extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ControladorPrincipal.getInstance().mostraTelaCadastroAula(aluno.getCPF());
-        loadTables();
+        loadTable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -430,7 +430,7 @@ public class TelaAluno extends javax.swing.JFrame {
         });
     }
            
-    void loadTables() {
+    void loadTable() {
         String[] colunasAulas = new String[]{"Data", "Nivel", "Status", "ID"};
         DefaultTableModel tableModel = new DefaultTableModel(colunasAulas, 0);
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
@@ -459,7 +459,8 @@ public class TelaAluno extends javax.swing.JFrame {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                    ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)jTable1.getValueAt(row, 3), aluno);  ///Manter essa linha, pro resto funfarr 
+                    ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)jTable1.getValueAt(row, 4), aluno);  ///Manter essa linha, pro resto funfarr 
+                    loadTable();
                 }
             }
         });
@@ -491,7 +492,7 @@ public class TelaAluno extends javax.swing.JFrame {
         jLcontato.setText(aluno.getNomeEmergencia());
         jLcontatoTel.setText(aluno.getTelefoneEmergencia());
         jLrelacao.setText(aluno.getRelacaoEmergencia());
-        loadTables();
+        loadTable();
         this.setVisible(true);
     }
 
