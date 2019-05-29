@@ -59,6 +59,11 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButtonSave.setText("Salvar");
         jButtonSave.setToolTipText("Botão Salvar");
@@ -82,8 +87,6 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jLabel2.setText("em");
 
         jFdatapagto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFdatapagto.setText("Data do Pagto");
-        jFdatapagto.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,8 +97,8 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                 .addComponent(jCpago)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFdatapagto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jFdatapagto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -106,7 +109,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                     .addComponent(jCpago)
                     .addComponent(jLabel2)
                     .addComponent(jFdatapagto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
@@ -120,10 +123,8 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jLabel6.setText("Prancha ID");
 
         jFdatarealizada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFdatarealizada.setText("Data da Realizaçao");
 
-        jFid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFid.setToolTipText("ID da prancha");
+        jFid.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFidActionPerformed(evt);
@@ -140,22 +141,23 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLnivel)
-                            .addComponent(jFdatarealizada, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFid, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLnivel)
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jFdatarealizada, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jFid)
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jFdatarealizada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -163,7 +165,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jFid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLnivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -204,9 +206,8 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,13 +220,18 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         try{
             SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-            Date dataRealizacao = formatador.parse(jFdatarealizada.getText());
             String prancha = jFid.getText();
+            Date datapagto = null;
+            Date dataRealizacao = null;
             boolean pagou = jCpago.isSelected();
-            Date datapagto = formatador.parse(jFdatapagto.getText());
+            if (jFdatapagto.getText() != null){
+                datapagto = formatador.parse(jFdatapagto.getText());}
+            if (jFdatarealizada.getText() != null){
+                dataRealizacao = formatador.parse(jFdatarealizada.getText());}
             if (ControladorPrancha.getInstance().pranchaExiste(prancha)){
                 ControladorAula.getInstance().editaAula(aluno, prancha, dataRealizacao, pagou, datapagto, aula);
                 JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!"); 
+                limpaTela();
             } 
             else{ JOptionPane.showMessageDialog(null, "ID da prancha não existe!");}
         }
@@ -233,11 +239,16 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
          {
              JOptionPane.showMessageDialog(null, "Erro de parse!");
          }
+        
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jCpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCpagoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpaTela();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jFidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFidActionPerformed
         // TODO add your handling code here:
@@ -254,19 +265,28 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         this.aluno = aluno;
         this.aula = aula;
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");     
-        try{
-        jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));
-        jFdatapagto.setText(formatador.format(aula.getDataPagamento()));
+        if (aula.getDataRealizacao() != null){
+        jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));}
+        if (aula.getDataPagamento() != null){
+            jFdatapagto.setText(formatador.format(aula.getDataPagamento())); }
+        if (aula.getPrancha() != null){
+        jFid.setText(aula.getPrancha().getID());}
         jLnome.setText(aluno.getNome());
-        jFid.setText(aula.getPrancha().getID());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         jCpago.setSelected(aula.isPagamentoRealizado());
-        }
-        catch(java.lang.NullPointerException e){
-        }
+        
         this.setVisible(true);
     }
     
+    public void limpaTela(){
+        jFdatarealizada.setText("");
+        jFdatapagto.setText("");
+        jLnome.setText("");
+        jFid.setText("");
+        jLnivel.setText("");
+        jCpago.setSelected(false);
+        this.setVisible(false);
+    }
     
     /**
      * @param args the command line arguments
