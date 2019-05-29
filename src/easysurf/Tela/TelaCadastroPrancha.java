@@ -21,20 +21,20 @@ import javax.swing.JOptionPane;
 public class TelaCadastroPrancha extends javax.swing.JFrame {
 
     public static TelaCadastroPrancha instance;
+
     /**
      * Creates new form TelaCadastroPrancha
      */
     public TelaCadastroPrancha() {
         initComponents();
     }
-    
+
     public static TelaCadastroPrancha getInstance() {
         if (instance == null) {
             return instance = new TelaCadastroPrancha();
         }
         return instance;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,13 +63,13 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel1.setText("ID da prancha");
+        jLabel1.setText("ID da prancha:*");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Modelo");
+        jLabel2.setText("Modelo:*");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Data de cadastro");
+        jLabel3.setText("Data de cadastro:*");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Observações");
@@ -90,7 +90,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Tamanho");
+        jLabel5.setText("Tamanho:*");
 
         jTtamanho.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##0.##"))));
 
@@ -127,7 +127,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(63, 63, 63)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTcodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(jTcodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                             .addComponent(jTmodelo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTtamanho, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jFormattedTextField3)))
@@ -193,37 +193,39 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
     }//GEN-LAST:event_jTcodigoActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+
         String codigo = jTcodigo.getText();
         String data = jFormattedTextField3.getText();
         String observacao = jTobs.getText();
         String modelo = jTmodelo.getText();
-        float tamanho = Float.parseFloat(jTtamanho.getText());
-        
+        float tamanho = 0;
+
+        if (!jTtamanho.getText().isEmpty()) {
+            tamanho = Float.parseFloat(jTtamanho.getText());
+        }
+
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Date formatedData = formatador.parse(data);
-            if(ControladorPrancha.getInstance().criaPrancha(codigo, formatedData, modelo, observacao, tamanho)){
-                JOptionPane.showMessageDialog(null, "Prancha cadastrada com sucesso.");
-                    jTcodigo.setText("");
-                    jFormattedTextField3.setText("");
-                    jTobs.setText("");
-                    jTmodelo.setText("");
-                    jTtamanho.setText("");
+            if (!jTcodigo.getText().isEmpty() && !jTmodelo.getText().isEmpty() && !jFormattedTextField3.getText().isEmpty() && !jTtamanho.getText().isEmpty()) {
+                Date formatedData = formatador.parse(data);
+                if (ControladorPrancha.getInstance().criaPrancha(codigo, formatedData, modelo, observacao, tamanho)) {
+                    JOptionPane.showMessageDialog(null, "Prancha cadastrada com sucesso.");
+                    limpaCampos();
                     TelaPrincipal.getInstance().loadTables();
-                    ControladorPrincipal.getInstance().escondeTelaCadastroPrancha(); 
-            }else{
+                    ControladorPrincipal.getInstance().escondeTelaCadastroPrancha();
+                } else {
                     JOptionPane.showMessageDialog(null, "Prancha já está cadastrada.");
-                    jTcodigo.setText("");
-                    jFormattedTextField3.setText("");
-                    jTobs.setText("");
-                    jTmodelo.setText("");
-                    jTtamanho.setText("");
+                    limpaCampos();
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios");
+            }
+
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Erro de parse, revise os campos e tente novamente!");
+            JOptionPane.showMessageDialog(null, "Por faovr, preencha o campo de data corretamente");
             Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -263,6 +265,14 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                 new TelaCadastroPrancha().setVisible(true);
             }
         });
+    }
+
+    public void limpaCampos() {
+        jTcodigo.setText("");
+        jFormattedTextField3.setText("");
+        jTobs.setText("");
+        jTmodelo.setText("");
+        jTtamanho.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

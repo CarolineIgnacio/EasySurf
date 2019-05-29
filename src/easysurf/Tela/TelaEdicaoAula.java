@@ -224,9 +224,9 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
             Date datapagto = null;
             Date dataRealizacao = null;
             boolean pagou = jCpago.isSelected();
-            if (jFdatapagto.getText() != null){
+            if (jFdatapagto.getValue() != null){
                 datapagto = formatador.parse(jFdatapagto.getText());}
-            if (jFdatarealizada.getText() != null){
+            if (jFdatarealizada.getValue() != null){
                 dataRealizacao = formatador.parse(jFdatarealizada.getText());}
             if (ControladorPrancha.getInstance().pranchaExiste(prancha)){
                 ControladorAula.getInstance().editaAula(aluno, prancha, dataRealizacao, pagou, datapagto, aula);
