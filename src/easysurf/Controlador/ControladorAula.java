@@ -60,9 +60,12 @@ public class ControladorAula {
     public void editaAula(Aluno aluno, String prancha, Date dataRealizacao, boolean pago, Date datapagto, Aula aula)
     {
         Prancha objPrancha = PranchaDAO.getInstancia().get(prancha);
-        aula.setDataPagamento(datapagto);
+        if (datapagto != null){
+        aula.setDataPagamento(datapagto);}
         aula.setPrancha(objPrancha);
+        if (dataRealizacao != null){
         aula.setDataRealizacao(dataRealizacao);
+        aula.setRealizada(true);}
         aula.setPagamentoRealizado(pago);
         AulaDAO.getInstancia().put(aula);
     }

@@ -5,7 +5,7 @@
  */
 package easysurf.Tela;
 
-import easysurf.Controlador.ControladorFuncionario;
+import easysurf.Controlador.ControladorEscola;
 import easysurf.Controlador.ControladorPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -147,7 +147,7 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 senha = String.valueOf(jPasswordField1.getPassword());
-                if(ControladorFuncionario.getInstance().senhaCorreta(senha)) {
+                if(ControladorEscola.getInstance().senhaCorreta(senha)) {
                     ControladorPrincipal.getInstance().mostraTelaPrincipal();
                 }else{
                     JOptionPane.showMessageDialog(null, "Senha incorreta.");

@@ -436,7 +436,7 @@ public class TelaAluno extends javax.swing.JFrame {
         System.out.println(aluno.getCPF());
         String[] colunasAulas = new String[]{"Data", "Nivel", "Status", "ID"};
         DefaultTableModel tableModel = new DefaultTableModel(colunasAulas, 0);
-        //SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         for (Aula aula : aulas) {
             Date data = aula.getDataPagamento();
             int nivel = aula.getNivel();
@@ -461,7 +461,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                    ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)jTable1.getValueAt(row, 4), aluno);  ///Manter essa linha, pro resto funfarr 
+                    ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)jTable1.getValueAt(row, 3), aluno);  ///Manter essa linha, pro resto funfarr 
                     loadTable();
                 }
             }
