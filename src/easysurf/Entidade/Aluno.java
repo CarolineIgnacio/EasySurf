@@ -18,17 +18,19 @@ import java.util.Date;
  */
 public class Aluno implements Serializable{
     
-    String nome;
-    String RG;
-    String CPF;
-    String telefone;
-    int nivel;
+    ArrayList<Aula> aulas;
+    String nome; 
+    String email;
+    String RG; 
+    String CPF; 
+    String telefone; 
+    int nivel; 
     int aulasFeitas;
-    Date dataNascimento;
-    String nomeEmergencia;
-    String relacaoEmergencia;
-    String telefoneEmergencia;
-    ArrayList<Aula> aulas; 
+    Date dataNascimento; 
+    String nomeEmergencia; 
+    String relacaoEmergencia; 
+    String telefoneEmergencia; 
+    
 
     public Aluno(String nome, String RG, String CPF, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneContatoEmergencia) {
         this.nome = nome;
