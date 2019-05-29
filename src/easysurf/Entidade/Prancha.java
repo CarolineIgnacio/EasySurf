@@ -36,10 +36,6 @@ public class Prancha implements Serializable{
     public String getObservacoes() {
         return observacoes;
     }
-    
-    public String getID(){
-        return this.codigo;
-    }
 
     public String getCodigo() {
         return codigo;

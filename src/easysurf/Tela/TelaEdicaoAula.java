@@ -270,7 +270,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         if (aula.getDataPagamento() != null){
             jFdatapagto.setText(formatador.format(aula.getDataPagamento())); }
         if (aula.getPrancha() != null){
-        jFid.setText(aula.getPrancha().getID());}
+        jFid.setText(aula.getPrancha().getCodigo());}
         jLnome.setText(aluno.getNome());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         jCpago.setSelected(aula.isPagamentoRealizado());

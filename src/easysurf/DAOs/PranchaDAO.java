@@ -83,7 +83,7 @@ public class PranchaDAO implements Serializable {
     }
 
     public void put(Prancha prancha){
-        cachePranchas.put(prancha.getID(), prancha);
+        cachePranchas.put(prancha.getCodigo(), prancha);
         persist();
     }
 
@@ -92,7 +92,7 @@ public class PranchaDAO implements Serializable {
     }
 
     public void remove (Prancha prancha){
-        cachePranchas.remove(prancha.getID(), prancha);
+        cachePranchas.remove(prancha.getCodigo(), prancha);
         persist();
     }
 
