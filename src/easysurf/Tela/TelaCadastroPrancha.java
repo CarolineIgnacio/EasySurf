@@ -199,6 +199,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         String observacao = jTobs.getText();
         String modelo = jTmodelo.getText();
         float tamanho = 0;
+
         if (!jTtamanho.getText().isEmpty()) {
             tamanho = Float.parseFloat(jTtamanho.getText());
         }
