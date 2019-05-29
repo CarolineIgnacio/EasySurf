@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
@@ -85,7 +87,6 @@ public class AulaDAO implements Serializable {
     }
 
     public void put(Aula aula){
-        System.out.println("ID da Aula: " + aula.getNumeroAula());
         cacheAulas.put(aula.getNumeroAula(), aula);
         persist();
     }
@@ -97,7 +98,7 @@ public class AulaDAO implements Serializable {
     public ArrayList<Aula> getAulaPorCPF(String CPF) {
         ArrayList<Aula> aulasDeUmAluno = new ArrayList<>();
         for (Aula aula: getList()) {
-            if (aula.getCPFAluno() == CPF) {
+            if (aula.getCPFAluno().equals(CPF)) {
                 aulasDeUmAluno.add(aula);
             }
         }
