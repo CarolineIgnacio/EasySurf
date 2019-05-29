@@ -7,6 +7,7 @@ package easysurf.Controlador;
 
 import easysurf.DAOs.PranchaDAO;
 import easysurf.Entidade.Prancha;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -15,11 +16,12 @@ import java.util.Date;
  */
 public class ControladorPrancha {
     
-    static ControladorPrancha instance;
+    private static ControladorPrancha instance;
+    private ArrayList<Prancha> pranchas;
    
     
     public boolean criaPrancha(String codigo, Date dataInclusao, String modelo, String observacoes, float tamanho) {
-        if (pranchaExiste(codigo)){
+        if (!pranchaExiste(codigo)){
             Prancha prancha = new Prancha(codigo, dataInclusao, modelo, tamanho, observacoes);
             ControladorEscola.getInstance().adicionaPrancha(prancha);
             return true;
@@ -44,5 +46,30 @@ public class ControladorPrancha {
         else{
             return true;
         }
+    }
+    
+    public ArrayList<Prancha> getDadosDaTabela() {
+        pranchas = ControladorEscola.getInstance().getListaPranchas();
+        return pranchas;
+    }
+    
+    public void atualizaPrancha(Prancha prancha){
+        removePranchaCodigo(prancha.getCodigo());
+        ControladorEscola.getInstance().adicionaPrancha(prancha);
+    }
+
+    public void removePranchaCodigo(String codigo) {
+        Prancha prancha = getPranchaCodigo(codigo);
+        ControladorEscola.getInstance().removePrancha(prancha);
+    }
+
+    public Prancha getPranchaCodigo(String codigo) {
+        getDadosDaTabela();
+        for (Prancha prancha : pranchas) {
+            if (prancha.getCodigo().equals(codigo)) {
+                return prancha;
+            }
+        }
+        return null;
     }
 }

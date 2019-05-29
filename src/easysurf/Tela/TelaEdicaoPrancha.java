@@ -7,6 +7,7 @@ package easysurf.Tela;
 
 import easysurf.Controlador.ControladorPrancha;
 import easysurf.Controlador.ControladorPrincipal;
+import easysurf.Entidade.Prancha;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,25 +17,19 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author caroline
+ * @author Caroline Ignácio
  */
-public class TelaCadastroPrancha extends javax.swing.JFrame {
+public class TelaEdicaoPrancha extends javax.swing.JFrame {
 
-    public static TelaCadastroPrancha instance;
+    public static TelaEdicaoPrancha instance;
+    private Prancha prancha;
+
     /**
-     * Creates new form TelaCadastroPrancha
+     * Creates new form TelaEdicaoPrancha
      */
-    public TelaCadastroPrancha() {
+    public TelaEdicaoPrancha() {
         initComponents();
     }
-    
-    public static TelaCadastroPrancha getInstance() {
-        if (instance == null) {
-            return instance = new TelaCadastroPrancha();
-        }
-        return instance;
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +54,8 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         jTtamanho = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +71,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setText("Observações");
 
+        jTcodigo.setEditable(false);
         jTcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTcodigoActionPerformed(evt);
@@ -82,7 +80,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTobs);
 
-        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.setText("Salvar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCadastrarActionPerformed(evt);
@@ -107,6 +105,8 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel6.setText("Alugada");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -127,14 +127,20 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(63, 63, 63)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTcodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                            .addComponent(jTcodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                             .addComponent(jTmodelo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTtamanho, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jFormattedTextField3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(84, 84, 84)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,11 +163,15 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTtamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jCheckBox1))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
@@ -193,37 +203,29 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
     }//GEN-LAST:event_jTcodigoActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         String codigo = jTcodigo.getText();
-        String data = jFormattedTextField3.getText();
+        try {
+            Date data = formatador.parse(jFormattedTextField3.getText());
+            prancha.setDataInclusao(data);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+            Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String observacao = jTobs.getText();
         String modelo = jTmodelo.getText();
         float tamanho = Float.parseFloat(jTtamanho.getText());
+        boolean alugada = jCheckBox1.isSelected();
+        prancha.setCodigo(codigo);
+
+        prancha.setDisponivel(!alugada);
+        prancha.setObservacoes(observacao);
+        prancha.setModelo(modelo);
         
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date formatedData = formatador.parse(data);
-            if(ControladorPrancha.getInstance().criaPrancha(codigo, formatedData, modelo, observacao, tamanho)){
-                JOptionPane.showMessageDialog(null, "Prancha cadastrada com sucesso.");
-                    jTcodigo.setText("");
-                    jFormattedTextField3.setText("");
-                    jTobs.setText("");
-                    jTmodelo.setText("");
-                    jTtamanho.setText("");
-                    TelaPrincipal.getInstance().loadTables();
-                    ControladorPrincipal.getInstance().escondeTelaCadastroPrancha(); 
-            }else{
-                    JOptionPane.showMessageDialog(null, "Prancha já está cadastrada.");
-                    jTcodigo.setText("");
-                    jFormattedTextField3.setText("");
-                    jTobs.setText("");
-                    jTmodelo.setText("");
-                    jTtamanho.setText("");
-                }
-        } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Erro de parse, revise os campos e tente novamente!");
-            Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        ControladorPrancha.getInstance().atualizaPrancha(prancha);
+        TelaPrincipal.getInstance().loadTables();
+        this.setVisible(false);
+
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -247,33 +249,55 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEdicaoPrancha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroPrancha().setVisible(true);
+                new TelaEdicaoPrancha().setVisible(true);
             }
         });
+    }
+
+    public static TelaEdicaoPrancha getInstance() {
+        if (instance == null) {
+            return instance = new TelaEdicaoPrancha();
+        }
+        return instance;
+    }
+
+    public void iniciaTela(String codigo) {
+        prancha = ControladorPrancha.getInstance().getPranchaCodigo(codigo);
+        jTcodigo.setText(prancha.getCodigo());
+        jTmodelo.setText(prancha.getModelo());
+        jTtamanho.setText(Float.toString(prancha.getTamanho()));
+        jTobs.setText(prancha.getObservacoes());
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        jFormattedTextField3.setText(formatador.format(prancha.getDataInclusao()));
+        jCheckBox1.setSelected(!prancha.isDisponivel());
+        this.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTcodigo;
