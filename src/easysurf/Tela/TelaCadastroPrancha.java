@@ -197,7 +197,14 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         String data = jFormattedTextField3.getText();
         String observacao = jTobs.getText();
         String modelo = jTmodelo.getText();
-        float tamanho = Float.parseFloat(jTtamanho.getText());
+        float tamanho = 0;
+        if (jTtamanho.getText() !=null){
+            tamanho = Float.parseFloat(jTtamanho.getText());}
+        
+        if (codigo == null){
+            JOptionPane.showMessageDialog(null, "O ID da prancha é obrigatório!");
+            return;
+        }
         
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         try {
