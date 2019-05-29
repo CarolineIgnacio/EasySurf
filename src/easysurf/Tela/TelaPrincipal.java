@@ -409,7 +409,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         DefaultTableModel tableModel2 = new DefaultTableModel(colunasPranchas, 0);
         this.pranchas = ControladorEscola.getInstance().getListaPranchas();
         for (Prancha prancha : pranchas) {
-            String id = prancha.getID();
+            String id = prancha.getCodigo();
             String modelo = prancha.getModelo();
             String alugada;
             if(prancha.isDisponivel()){

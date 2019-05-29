@@ -258,7 +258,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));
         jFdatapagto.setText(formatador.format(aula.getDataPagamento()));
         jLnome.setText(aluno.getNome());
-        jFid.setText(aula.getPrancha().getID());
+        jFid.setText(aula.getPrancha().getCodigo());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         jCpago.setSelected(aula.isPagamentoRealizado());
         }
