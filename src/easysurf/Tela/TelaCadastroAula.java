@@ -73,6 +73,11 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         });
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLnivel.setText("jLabel3");
 
@@ -148,12 +153,16 @@ public class TelaCadastroAula extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ControladorAula.getInstance().criaAula(jCheckBox1.isSelected(), jCheckBox2.isSelected(), aluno.getCPF());
-        this.setVisible(false);
+        limpaTela();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
 
     }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       limpaTela();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,29 +198,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
             }
         });
     }
-//
-//    public void acoes() {
-//        jButton1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (jCheckBox1.isSelected()) {
-//                    ehPacote = true;
-//                } else {
-//                    ehPacote = false;
-//                }
-//                
-//                if(jCheckBox2.isSelected()) {
-//                    estaPago = true;
-//                }else {
-//                    estaPago = false;
-//                }
-//                
-//                ControladorAula.getInstance().criaAula(ehPacote, estaPago, cpfAluno);
-//            }
-//        });
-//        ehPacote = false;
-//        estaPago = false;
-//    }
+
 
     public static TelaCadastroAula getInstance() {
         if (instance == null) {
@@ -226,6 +213,15 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         this.setVisible(true);
         }
+     
+     public void limpaTela(){
+        this.aluno = null;
+        jLnome.setText("");
+        jLnivel.setText("");
+        jCheckBox1.setSelected(false);
+        jCheckBox2.setSelected(false);
+        this.setVisible(false);
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

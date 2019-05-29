@@ -253,13 +253,17 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     public void iniciaTela(Aula aula, Aluno aluno){
         this.aluno = aluno;
         this.aula = aula;
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        jLnome.setText(aluno.getNome());
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");     
+        try{
         jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));
+        jFdatapagto.setText(formatador.format(aula.getDataPagamento()));
+        jLnome.setText(aluno.getNome());
         jFid.setText(aula.getPrancha().getID());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         jCpago.setSelected(aula.isPagamentoRealizado());
-        jFdatapagto.setText(formatador.format(aula.getDataPagamento()));
+        }
+        catch(java.lang.NullPointerException e){
+        }
         this.setVisible(true);
     }
     
