@@ -3,14 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaCadastroPrancha.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaAcessoFuncionario.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/DAOs/AlunoDAO.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaCadastroAula.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaAluno.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaPrincipal.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Entidade/Aluno.java</file>
-            <file>file:/C:/Users/Caroline%20Ignácio/Documents/EasySurf/src/easysurf/Tela/TelaPrancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaCadastroAula.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaPrincipal.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaCadastroPrancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaAluno.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/DAOs/PranchaDAO.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaEdicaoAula.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Entidade/Aluguel.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaCadastroAluno.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaCadastroLong.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaEdicaoPrancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaEdicaoAluno.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaPrancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaAluguel.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Controlador/ControladorPrincipal.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Tela/TelaAcessoFuncionario.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Controlador/ControladorPrancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Entidade/Prancha.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Entidade/Long.java</file>
+            <file>file:/home/trust/Documentos/APS/EasySurf/src/easysurf/Entidade/Aula.java</file>
         </group>
     </open-files>
 </project-private>
