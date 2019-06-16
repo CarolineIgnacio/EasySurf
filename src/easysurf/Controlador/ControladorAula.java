@@ -21,7 +21,7 @@ public class ControladorAula {
 
     public static ControladorAula instance;
     private int numeroAula;
-    int count = 0;
+    private int count = 0;
 
     public int getNumeroAula() {
         return numeroAula;

@@ -28,10 +28,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaAluno extends javax.swing.JFrame {
     
-    public static TelaAluno instance;
+    private static TelaAluno instance;
     private String CPF;
     private Aluno aluno;
-    ArrayList<Aula> aulas;
+    private ArrayList<Aula> aulas;
     
     /**
      * Creates new form TelaAluno

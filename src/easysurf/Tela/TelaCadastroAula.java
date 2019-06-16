@@ -17,10 +17,10 @@ import java.awt.event.ActionListener;
  */
 public class TelaCadastroAula extends javax.swing.JFrame {
 
-    public static TelaCadastroAula instance;
-    Aluno aluno;
-    boolean ehPacote = false;
-    boolean estaPago = false;
+    private static TelaCadastroAula instance;
+    private Aluno aluno;
+    private boolean ehPacote = false;
+    private boolean estaPago = false;
 
     /**
      * Creates new form TelaCadastroAula

@@ -14,15 +14,15 @@ import java.util.Date;
  */
 public class Aluguel implements Serializable {
     
-    float caucao;
-    Date dataAluguel;
-    int nrHoras;
-    Aluno aluno;
-    Prancha prancha;
-    Long rLong;
-    String ID;
-    String CPF;
-    float valor;
+    private float caucao;
+    private Date dataAluguel;
+    private int nrHoras;
+    private Aluno aluno;
+    private Prancha prancha;
+    private Long rLong;
+    private String ID;
+    private String CPF;
+    private float valor;
 
     public Aluguel(float caucao, Date dataAluguel, int nrHoras, String CPF, Prancha prancha, Long rlong){
         this.caucao = caucao;

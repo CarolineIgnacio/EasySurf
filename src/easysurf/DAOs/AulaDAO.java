@@ -29,7 +29,6 @@ public class AulaDAO implements Serializable {
 
     private final String filename = "aulas.txt";
     private HashMap<Integer, Aula> cacheAulas = new HashMap<>();
-
     private static AulaDAO AulaDAO;
 
     public static AulaDAO getInstancia(){
