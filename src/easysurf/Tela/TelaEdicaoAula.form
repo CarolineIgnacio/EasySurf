@@ -78,7 +78,7 @@
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltaParaTelaAnterior"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSave">
@@ -87,7 +87,7 @@
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvaAlteracoes"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLnome">

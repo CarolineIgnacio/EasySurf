@@ -94,14 +94,14 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastraNovoAluno(evt);
             }
         });
 
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
@@ -244,13 +244,46 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void cadastraNovoAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraNovoAluno
+        String nome = jTextField1.getText();
+        String rg = jTextField2.getText();
+        String cpf = jFormattedTextField1.getText();
+        String telefone = jFormattedTextField2.getText();
+        String dataNascimento = jFormattedTextField3.getText();
+        String contatoEmergencia  = jTextField3.getText();
+        String relacaoEmergencia = jTextField4.getText();
+        String telefoneEmergencia= jFormattedTextField4.getText();
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        Date data;
+        Date dataAtual = new Date();
+        Calendar calendar = Calendar.getInstance();
+        try {
+            data = formatador.parse(dataNascimento);
+            calendar.setTime(data);
+            calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + 18);
+            if (dataAtual.after(calendar.getTime()) || sabequeehmenor){
+               if (nome.length() > 0 && cpf.length() == 14 && contatoEmergencia.length() > 0 && telefoneEmergencia.length() == 14 && telefone.length() == 14){
+                    cadastraAluno(nome, rg, cpf, telefone, data, contatoEmergencia, relacaoEmergencia, telefoneEmergencia);
+                    sabequeehmenor = false;    
+                }
+               else{
+               JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+               }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Aluno menor de 18 anos!! Matrícula autorizada somente com acompanhamento dos responsáveis!");
+                sabequeehmenor = true;
+            }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+            Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cadastraNovoAluno
+
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
+        limpaTela();
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
     /**
      * @param args the command line arguments
@@ -287,90 +320,86 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         });
     }
     
+    public void limpaTela(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jFormattedTextField1.setText("");
+        jFormattedTextField2.setText("");
+        jFormattedTextField3.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jFormattedTextField4.setText("");
+        TelaPrincipal.getInstance().loadTables();
+        ControladorPrincipal.getInstance().escondeTelaCadastroAluno(); 
+    }
+    
     public void cadastraAluno(String nome, String rg, String cpf, String telefone, Date dataNascimento, String contatoEmergencia, String relacaoEmergencia, String telefoneEmergencia)
     {
          if (ControladorAluno.getInstance().criaAluno(nome, rg, cpf, telefone, dataNascimento, contatoEmergencia, relacaoEmergencia, telefoneEmergencia)) {
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
-                    jTextField1.setText("");
-                    jTextField2.setText("");
-                    jFormattedTextField1.setText("");
-                    jFormattedTextField2.setText("");
-                    jFormattedTextField3.setText("");
-                    jTextField3.setText("");
-                    jTextField4.setText("");
-                    jFormattedTextField4.setText("");
-                    TelaPrincipal.getInstance().loadTables();
-                    ControladorPrincipal.getInstance().escondeTelaCadastroAluno(); 
+                    limpaTela();
                 }else{
                     JOptionPane.showMessageDialog(null, "Aluno já está cadastrado.");
-                    jTextField1.setText("");
-                    jTextField2.setText("");
-                    jFormattedTextField1.setText("");
-                    jFormattedTextField2.setText("");
-                    jFormattedTextField3.setText("");
-                    jTextField3.setText("");
-                    jTextField4.setText("");
-                    jFormattedTextField4.setText("");
-                    ControladorPrincipal.getInstance().escondeTelaCadastroAluno();
+                    limpaTela();
                 }
     }
     
     public void acoes() {
         
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                String nome = jTextField1.getText();
-                String rg = jTextField2.getText();
-                String cpf = jFormattedTextField1.getText();
-                String telefone = jFormattedTextField2.getText();
-                String dataNascimento = jFormattedTextField3.getText();
-                String contatoEmergencia  = jTextField3.getText();
-                String relacaoEmergencia = jTextField4.getText();
-                String telefoneEmergencia= jFormattedTextField4.getText();
-                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-                Date data;
-                Date dataAtual = new Date();
-                Calendar calendar = Calendar.getInstance();
-                try {
-                    data = formatador.parse(dataNascimento);
-                    calendar.setTime(data);
-                    calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + 18);
-                    if (dataAtual.after(calendar.getTime()) || sabequeehmenor){
-                       if (nome.length() > 0 && cpf.length() == 14 && contatoEmergencia.length() > 0 && telefoneEmergencia.length() == 14 && telefone.length() == 14){
-                            cadastraAluno(nome, rg, cpf, telefone, data, contatoEmergencia, relacaoEmergencia, telefoneEmergencia);
-                        sabequeehmenor = false;    
-                        }
-                       else{
-                       JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
-                       }
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Aluno menor de 18 anos!! Matrícula autorizada somente com acompanhamento dos responsáveis!");
-                        sabequeehmenor = true;
-                    }
-                    
-                } catch (ParseException ex) {
-                    JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
-                    Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
-                }
-              }
-        });
-        jButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jTextField1.setText("");
-                jTextField2.setText("");
-                jFormattedTextField1.setText("");
-                jFormattedTextField2.setText("");
-                jFormattedTextField3.setText("");
-                jTextField3.setText("");
-                jTextField4.setText("");
-                jFormattedTextField4.setText("");
-                ControladorPrincipal.getInstance().escondeTelaCadastroAluno();
-            }
-        });
+//        jButton1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                
+//                String nome = jTextField1.getText();
+//                String rg = jTextField2.getText();
+//                String cpf = jFormattedTextField1.getText();
+//                String telefone = jFormattedTextField2.getText();
+//                String dataNascimento = jFormattedTextField3.getText();
+//                String contatoEmergencia  = jTextField3.getText();
+//                String relacaoEmergencia = jTextField4.getText();
+//                String telefoneEmergencia= jFormattedTextField4.getText();
+//                SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+//                Date data;
+//                Date dataAtual = new Date();
+//                Calendar calendar = Calendar.getInstance();
+//                try {
+//                    data = formatador.parse(dataNascimento);
+//                    calendar.setTime(data);
+//                    calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + 18);
+//                    if (dataAtual.after(calendar.getTime()) || sabequeehmenor){
+//                       if (nome.length() > 0 && cpf.length() == 14 && contatoEmergencia.length() > 0 && telefoneEmergencia.length() == 14 && telefone.length() == 14){
+//                            cadastraAluno(nome, rg, cpf, telefone, data, contatoEmergencia, relacaoEmergencia, telefoneEmergencia);
+//                        sabequeehmenor = false;    
+//                        }
+//                       else{
+//                       JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+//                       }
+//                    }
+//                    else{
+//                        JOptionPane.showMessageDialog(null, "Aluno menor de 18 anos!! Matrícula autorizada somente com acompanhamento dos responsáveis!");
+//                        sabequeehmenor = true;
+//                    }
+//                    
+//                } catch (ParseException ex) {
+//                    JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
+//                    Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//              }
+//        });
+//        jButton2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                jTextField1.setText("");
+//                jTextField2.setText("");
+//                jFormattedTextField1.setText("");
+//                jFormattedTextField2.setText("");
+//                jFormattedTextField3.setText("");
+//                jTextField3.setText("");
+//                jTextField4.setText("");
+//                jFormattedTextField4.setText("");
+//                ControladorPrincipal.getInstance().escondeTelaCadastroAluno();
+//            }
+//        });
     }
     
     public static TelaCadastroAluno getInstance() {

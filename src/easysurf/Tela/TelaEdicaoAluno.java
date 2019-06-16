@@ -39,14 +39,14 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        nomeAluno = new javax.swing.JTextField();
+        rgAluno = new javax.swing.JTextField();
+        cpfAluno = new javax.swing.JFormattedTextField();
+        telefoneAluno = new javax.swing.JFormattedTextField();
+        dataNascimentoAluno = new javax.swing.JFormattedTextField();
+        relacaoEmergencia = new javax.swing.JTextField();
+        nomeEmergencia = new javax.swing.JTextField();
+        telefoneEmergencia = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -55,38 +55,38 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        labelNomeAluno = new javax.swing.JLabel();
         jBsalvar = new javax.swing.JButton();
         jBvoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jFormattedTextField1.setEditable(false);
+        cpfAluno.setEditable(false);
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            cpfAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cpfAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                cpfAlunoActionPerformed(evt);
             }
         });
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            telefoneAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            dataNascimentoAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         try {
-            jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            telefoneEmergencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -114,14 +114,14 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jLabel7.setText("Telefone Emergência*");
         jLabel7.setToolTipText("Telefone do contato de Emergência");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabel8.setText("Nome do aluno");
+        labelNomeAluno.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        labelNomeAluno.setText("Nome do aluno");
 
         jBsalvar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jBsalvar.setText("Salvar");
         jBsalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalvarActionPerformed(evt);
+                salvaEdicaoAluno(evt);
             }
         });
 
@@ -129,7 +129,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         jBvoltar.setText("Voltar");
         jBvoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBvoltarActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
@@ -147,18 +147,18 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel8)
+                    .addComponent(labelNomeAluno)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addComponent(jFormattedTextField1)
-                    .addComponent(jFormattedTextField2)
-                    .addComponent(jFormattedTextField3)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(relacaoEmergencia)
+                    .addComponent(nomeAluno)
+                    .addComponent(rgAluno)
+                    .addComponent(nomeEmergencia)
+                    .addComponent(cpfAluno)
+                    .addComponent(telefoneAluno)
+                    .addComponent(dataNascimentoAluno)
+                    .addComponent(telefoneEmergencia, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jBsalvar)
                         .addGap(18, 18, 18)
@@ -169,39 +169,39 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel8)
+                .addComponent(labelNomeAluno)
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rgAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpfAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefoneAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataNascimentoAluno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(relacaoEmergencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeEmergencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefoneEmergencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalvar)
@@ -229,33 +229,33 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBvoltarActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jBvoltarActionPerformed
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
+        limpaTela();
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
-    private void jBsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalvarActionPerformed
+    private void salvaEdicaoAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaEdicaoAluno
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        aluno.setNome(jTextField1.getText());
-        aluno.setRG(jTextField2.getText());
-        aluno.setTelefone(jFormattedTextField2.getText());
+        aluno.setNome(nomeAluno.getText());
+        aluno.setRG(rgAluno.getText());
+        aluno.setTelefone(telefoneAluno.getText());
         try {
-            aluno.setDataNascimento(formatador.parse(jFormattedTextField3.getText()));
+            aluno.setDataNascimento(formatador.parse(dataNascimentoAluno.getText()));
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios");
             Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-        aluno.setNomeEmergencia(jTextField3.getText());
-        aluno.setRelacaoEmergencia(jTextField4.getText());
-        aluno.setTelefoneEmergencia(jFormattedTextField4.getText());
+        aluno.setNomeEmergencia(nomeEmergencia.getText());
+        aluno.setRelacaoEmergencia(relacaoEmergencia.getText());
+        aluno.setTelefoneEmergencia(telefoneEmergencia.getText());
         
         ControladorAluno.getInstance().atualizaAluno(aluno);
         TelaPrincipal.getInstance().loadTables();
         this.setVisible(false);
-    }//GEN-LAST:event_jBsalvarActionPerformed
+    }//GEN-LAST:event_salvaEdicaoAluno
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void cpfAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfAlunoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_cpfAlunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,29 +298,33 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
         }
         return instance;
     }
+    
+    public void limpaTela(){
+        this.setVisible(false);
+        rgAluno.setText("");
+        relacaoEmergencia.setText("");
+    }
 
     public void iniciaTela(Aluno aluno) {
         this.aluno = aluno;
-        jLabel8.setText(aluno.getNome());
-        jTextField1.setText(aluno.getNome());
-        jTextField2.setText(aluno.getRG());
-        jFormattedTextField1.setText(aluno.getCPF());
-        jFormattedTextField2.setText(aluno.getTelefone());
+        labelNomeAluno.setText(aluno.getNome());
+        nomeAluno.setText(aluno.getNome());
+        rgAluno.setText(aluno.getRG());
+        cpfAluno.setText(aluno.getCPF());
+        telefoneAluno.setText(aluno.getTelefone());
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        jFormattedTextField3.setText(formatador.format(aluno.getDataNascimento()));
-        jTextField3.setText(aluno.getNomeEmergencia());
-        jTextField4.setText(aluno.getRelacaoEmergencia());
-        jFormattedTextField4.setText(aluno.getTelefoneEmergencia());
+        dataNascimentoAluno.setText(formatador.format(aluno.getDataNascimento()));
+        nomeEmergencia.setText(aluno.getNomeEmergencia());
+        relacaoEmergencia.setText(aluno.getRelacaoEmergencia());
+        telefoneEmergencia.setText(aluno.getTelefoneEmergencia());
         this.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField cpfAluno;
+    private javax.swing.JFormattedTextField dataNascimentoAluno;
     private javax.swing.JButton jBsalvar;
     private javax.swing.JButton jBvoltar;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,12 +332,14 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel labelNomeAluno;
+    private javax.swing.JTextField nomeAluno;
+    private javax.swing.JTextField nomeEmergencia;
+    private javax.swing.JTextField relacaoEmergencia;
+    private javax.swing.JTextField rgAluno;
+    private javax.swing.JFormattedTextField telefoneAluno;
+    private javax.swing.JFormattedTextField telefoneEmergencia;
     // End of variables declaration//GEN-END:variables
 }

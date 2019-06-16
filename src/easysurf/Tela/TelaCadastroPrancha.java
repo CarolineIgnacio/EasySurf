@@ -85,7 +85,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCadastrarActionPerformed(evt);
+                cadastraNovaPrancha(evt);
             }
         });
 
@@ -97,7 +97,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
@@ -192,7 +192,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTcodigoActionPerformed
 
-    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+    private void cadastraNovaPrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraNovaPrancha
 
         String codigo = jTcodigo.getText();
         String data = jFormattedTextField3.getText();
@@ -210,27 +210,26 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
                 Date formatedData = formatador.parse(data);
                 if (ControladorPrancha.getInstance().criaPrancha(codigo, formatedData, modelo, observacao, tamanho)) {
                     JOptionPane.showMessageDialog(null, "Prancha cadastrada com sucesso.");
-                    limpaCampos();
+                    limpaTela();
                     TelaPrincipal.getInstance().loadTables();
-                    ControladorPrincipal.getInstance().escondeTelaCadastroPrancha();
+                    
                 } else {
-                    JOptionPane.showMessageDialog(null, "Prancha já está cadastrada.");
-                    limpaCampos();
+                    JOptionPane.showMessageDialog(null, "Uma prancha com este ID já está cadastrada.");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos obrigatórios");
             }
 
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(null, "Por faovr, preencha o campo de data corretamente");
+            JOptionPane.showMessageDialog(null, "Por favor, preencha o campo de data corretamente");
             Logger.getLogger(TelaCadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jBCadastrarActionPerformed
+    }//GEN-LAST:event_cadastraNovaPrancha
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
+        limpaTela();
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
     /**
      * @param args the command line arguments
@@ -267,12 +266,13 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         });
     }
 
-    public void limpaCampos() {
+    public void limpaTela() {
         jTcodigo.setText("");
         jFormattedTextField3.setText("");
         jTobs.setText("");
         jTmodelo.setText("");
         jTtamanho.setText("");
+        this.setVisible(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -83,7 +83,7 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         jBCadastrar.setText("Salvar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBCadastrarActionPerformed(evt);
+                cadastraNovaPrancha(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         jButton2.setText("Voltar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
@@ -202,7 +202,7 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTcodigoActionPerformed
 
-    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+    private void cadastraNovaPrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraNovaPrancha
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         String codigo = jTcodigo.getText();
         try {
@@ -227,11 +227,11 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
         TelaPrincipal.getInstance().loadTables();
         this.setVisible(false);
 
-    }//GEN-LAST:event_jBCadastrarActionPerformed
+    }//GEN-LAST:event_cadastraNovaPrancha
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
+        limpaTela();
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
     /**
      * @param args the command line arguments
@@ -274,6 +274,10 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
             return instance = new TelaEdicaoPrancha();
         }
         return instance;
+    }
+    
+    public void limpaTela(){
+        this.setVisible(false);
     }
 
     public void iniciaTela(Prancha prancha) {

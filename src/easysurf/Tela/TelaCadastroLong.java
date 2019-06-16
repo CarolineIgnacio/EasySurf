@@ -70,8 +70,18 @@ public class TelaCadastroLong extends javax.swing.JPanel {
         });
 
         jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvaNovoLong(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltaParaTelaAnterior(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,7 +171,21 @@ public class TelaCadastroLong extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_voltaParaTelaAnterior
+
+    private void salvaNovoLong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaNovoLong
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salvaNovoLong
+
+
+    public void limpaTela(){
+        //add limpeza dos campos
+        this.setVisible(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

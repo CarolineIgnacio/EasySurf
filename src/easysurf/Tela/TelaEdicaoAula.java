@@ -61,7 +61,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
@@ -69,7 +69,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jButtonSave.setToolTipText("Botão Salvar");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSaveActionPerformed(evt);
+                salvaAlteracoes(evt);
             }
         });
 
@@ -217,7 +217,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+    private void salvaAlteracoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaAlteracoes
         try{
             SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
             String prancha = jFid.getText();
@@ -240,15 +240,15 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Erro de parse!");
          }
         
-    }//GEN-LAST:event_jButtonSaveActionPerformed
+    }//GEN-LAST:event_salvaAlteracoes
 
     private void jCpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCpagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCpagoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
         limpaTela();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
     private void jFidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFidActionPerformed
         // TODO add your handling code here:

@@ -77,6 +77,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton1.setText("Adicionar Aluno");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionaAluno(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Escola de Surf");
@@ -293,27 +298,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton2.setText("Adicionar Prancha");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionaPrancha(evt);
+            }
+        });
 
         jButton3.setText("Deletar Aluno");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                removeAluno(evt);
             }
         });
 
         jButton4.setText("Deletar Prancha");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                removePrancha(evt);
             }
         });
 
         jButton5.setText("Deletar Long");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeLong(evt);
+            }
+        });
 
         jButton6.setText("Adicionar Long");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                adicionaLong(evt);
             }
         });
 
@@ -322,7 +337,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton7.setText("Adicionar Aluguel");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                adicionaAluguel(evt);
             }
         });
 
@@ -418,21 +433,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void removeAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAluno
+        int row = jTable3.getSelectedRow();
+        String cpf = (String)jTable3.getValueAt(row, 1);
+        ControladorAluno.getInstance().removeAlunoCpf(cpf);
+        loadTables();
+    }//GEN-LAST:event_removeAluno
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void removePrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePrancha
+        int row = jTable2.getSelectedRow();
+        String id = (String)jTable2.getValueAt(row, 0);
+        ControladorPrancha.getInstance().removePranchaCodigo(id);
+        loadTables();
+    }//GEN-LAST:event_removePrancha
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void adicionaLong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaLong
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_adicionaLong
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void adicionaAluguel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaAluguel
+        ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
+    }//GEN-LAST:event_adicionaAluguel
+
+    private void AdicionaAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionaAluno
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_AdicionaAluno
+
+    private void adicionaPrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaPrancha
+        ControladorPrincipal.getInstance().mostraTelaCadastroPrancha();
+
+    }//GEN-LAST:event_adicionaPrancha
+
+    private void removeLong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLong
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeLong
 
     /**
      * @param args the command line arguments
@@ -502,39 +536,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public void acoes() {
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
-            }
-        });
-        
-        jButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ControladorPrincipal.getInstance().mostraTelaCadastroPrancha();
-            }
-        });
-        
-        jButton3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int row = jTable3.getSelectedRow();
-                String cpf = (String)jTable3.getValueAt(row, 1);
-                ControladorAluno.getInstance().removeAlunoCpf(cpf);
-                loadTables();
-            }
-        });
-        
-        jButton4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int row = jTable2.getSelectedRow();
-                String id = (String)jTable2.getValueAt(row, 0);
-                ControladorPrancha.getInstance().removePranchaCodigo(id);
-                loadTables();
-            }
-        });
+//        jButton1.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
+//            }
+//        });
+//        
+//        jButton2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                ControladorPrincipal.getInstance().mostraTelaCadastroPrancha();
+//            }
+//        });
+//        
+//        jButton3.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int row = jTable3.getSelectedRow();
+//                String cpf = (String)jTable3.getValueAt(row, 1);
+//                ControladorAluno.getInstance().removeAlunoCpf(cpf);
+//                loadTables();
+//            }
+//        });
+//        
+//        jButton4.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int row = jTable2.getSelectedRow();
+//                String id = (String)jTable2.getValueAt(row, 0);
+//                ControladorPrancha.getInstance().removePranchaCodigo(id);
+//                loadTables();
+//            }
+//        });
 
         jTable3.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
@@ -560,17 +594,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    //quando for listar um aluno, e abrir a página dele ao dar os dois clicks no nome que 
-    //ta na tabela, passar também cmo parametro o cpf desse aluno
-    //EXEMPLO:
-    /*public void acoes() {
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ControladorPrincipal.getInstance().mostraTelaAluno(CPFDOALUNO);
-            }
-        });
-    }*/
     public static TelaPrincipal getInstance() {
         if (instance == null) {
             return instance = new TelaPrincipal();

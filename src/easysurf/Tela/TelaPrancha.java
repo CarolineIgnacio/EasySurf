@@ -68,14 +68,14 @@ public class TelaPrancha extends javax.swing.JFrame {
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                voltaParaTelaAnterior(evt);
             }
         });
 
         jButton2.setText("Editar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                mostraEdicaoDePranha(evt);
             }
         });
 
@@ -157,9 +157,9 @@ public class TelaPrancha extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addGap(19, 19, 19))
         );
 
@@ -183,15 +183,15 @@ public class TelaPrancha extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void voltaParaTelaAnterior(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltaParaTelaAnterior
         limpaTela();
         ControladorPrincipal.getInstance().mostraTelaPrincipal();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_voltaParaTelaAnterior
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void mostraEdicaoDePranha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostraEdicaoDePranha
         ControladorPrincipal.getInstance().mostraTelaEdicaoPrancha(prancha.getCodigo());
         limpaTela();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_mostraEdicaoDePranha
 
     /**
      * @param args the command line arguments

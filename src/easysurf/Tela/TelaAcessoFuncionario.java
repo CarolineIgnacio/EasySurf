@@ -25,7 +25,6 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
      */
     public TelaAcessoFuncionario() {
         initComponents();
-        acoes();
     }
 
     /**
@@ -51,6 +50,11 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
         jLabel1.setText("Escola de Surf ");
 
         jButton1.setText("Acessar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fazLogin(evt);
+            }
+        });
 
         jLabel2.setText("Por favor, digite a senha de acesso:");
 
@@ -107,6 +111,15 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fazLogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazLogin
+        senha = String.valueOf(jPasswordField1.getPassword());
+        if(ControladorEscola.getInstance().senhaCorreta(senha)) {
+            ControladorPrincipal.getInstance().mostraTelaPrincipal();
+        }else{
+            JOptionPane.showMessageDialog(null, "Senha incorreta.");
+        }
+    }//GEN-LAST:event_fazLogin
+
     /**
      * @param args the command line arguments
      */
@@ -141,21 +154,7 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void acoes() {
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                senha = String.valueOf(jPasswordField1.getPassword());
-                if(ControladorEscola.getInstance().senhaCorreta(senha)) {
-                    ControladorPrincipal.getInstance().mostraTelaPrincipal();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Senha incorreta.");
-                }
-            }
-        });
-    }
-    
+       
     public static TelaAcessoFuncionario getInstance() {
         if (instance == null) {
             return instance = new TelaAcessoFuncionario();
