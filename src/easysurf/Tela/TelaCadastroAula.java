@@ -156,7 +156,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
     }//GEN-LAST:event_cbEhPacoteActionPerformed
 
     private void cadastraNovaAula(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastraNovaAula
-        ControladorAula.getInstance().criaAula(ehPacote, estaPago, aluno.getCPF());
+        ControladorAula.getInstance().adicionaNovasAulas(ehPacote, estaPago, aluno.getCPF());
         limpaTela();
     }//GEN-LAST:event_cadastraNovaAula
 
@@ -220,7 +220,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
 //                    estaPago = false;
 //                }
 //                
-//                ControladorAula.getInstance().criaAula(ehPacote, estaPago, aluno.getCPF());
+//                ControladorAula.getInstance().adicionaNovasAulas(ehPacote, estaPago, aluno.getCPF());
 //                ControladorPrincipal.getInstance().escondeTelaCadastroAula();
 //            }
 //        });

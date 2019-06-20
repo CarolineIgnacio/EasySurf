@@ -31,28 +31,27 @@ public class ControladorAula {
         this.numeroAula = numeroAula;
     }
 
-    public void criaAula(boolean ehPacote, boolean estaPago, String cpfAluno) {
-        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(cpfAluno);
-        if (ehPacote) {
-            for (int i = 0; i < 5; i++) {
-                Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
+    private void criaAula(int nivel, boolean ehPacote, boolean estaPago, String cpfAluno){
+        Aula aula = new Aula(nivel, ehPacote, estaPago, getNumeroAula(), cpfAluno);
                 setNumeroAula(getNumeroAula() + 1);
                 if (estaPago) {
                     Date dataPagamento = new Date();
                     aula.setDataPagamento(dataPagamento);
                 }
                 AulaDAO.getInstancia().put(aula);
+    }    
+    
+    
+    public void adicionaNovasAulas(boolean ehPacote, boolean estaPago, String cpfAluno) {
+        Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(cpfAluno);
+        int nivel = aluno.getNivel();
+        criaAula(nivel, ehPacote, estaPago, cpfAluno);
+        if (ehPacote) {
+            for (int i = 0; i < 4; i++) {
+                criaAula(nivel, ehPacote, estaPago, cpfAluno);
             }
-        } else {
-            Aula aula = new Aula(aluno.getNivel(), ehPacote, estaPago, getNumeroAula(), cpfAluno);
-            setNumeroAula(getNumeroAula() + 1);
-            if (estaPago) {
-                Date dataPagamento = new Date();
-                aula.setDataPagamento(dataPagamento);
-            }
-            AulaDAO.getInstancia().put(aula);
-            System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
-            System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
+        System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
+        System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
             //System.out.println(aula.getDataPagamento());
         }
     }
