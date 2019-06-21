@@ -27,7 +27,6 @@ public class TelaCadastroAula extends javax.swing.JFrame {
      */
     public TelaCadastroAula() {
         initComponents();
-        acoes();
     }
 
     /**
@@ -203,31 +202,6 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         });
     }
 
-
-    public void acoes() {
-//        jButton1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (jCheckBox1.isSelected()) {
-//                    ehPacote = true;
-//                } else {
-//                    ehPacote = false;
-//               }
-//                
-//                if(jCheckBox2.isSelected()) {
-//                    estaPago = true;
-//                }else {
-//                    estaPago = false;
-//                }
-//                
-//                ControladorAula.getInstance().adicionaNovasAulas(ehPacote, estaPago, aluno.getCPF());
-//                ControladorPrincipal.getInstance().escondeTelaCadastroAula();
-//            }
-//        });
-    }
-    
-    
-
     public static TelaCadastroAula getInstance() {
         if (instance == null) {
             return instance = new TelaCadastroAula();
@@ -250,7 +224,7 @@ public class TelaCadastroAula extends javax.swing.JFrame {
         jLnivel.setText("");
         cbEhPacote.setSelected(false);
         cbPagou.setSelected(false);
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaCadastroAula();
      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

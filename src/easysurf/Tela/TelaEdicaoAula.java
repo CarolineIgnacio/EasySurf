@@ -7,6 +7,7 @@ package easysurf.Tela;
 
 import easysurf.Controlador.ControladorAula;
 import easysurf.Controlador.ControladorPrancha;
+import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Aula;
 import java.text.ParseException;
@@ -285,7 +286,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jFid.setText("");
         jLnivel.setText("");
         jCpago.setSelected(false);
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaEdicaoAula();
     }
     
     /**

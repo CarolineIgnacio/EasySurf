@@ -272,7 +272,7 @@ public class TelaCadastroPrancha extends javax.swing.JFrame {
         jTobs.setText("");
         jTmodelo.setText("");
         jTtamanho.setText("");
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaCadastroPrancha();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -33,12 +33,14 @@ public class ControladorAula {
 
     private void criaAula(int nivel, boolean ehPacote, boolean estaPago, String cpfAluno){
         Aula aula = new Aula(nivel, ehPacote, estaPago, getNumeroAula(), cpfAluno);
-                setNumeroAula(getNumeroAula() + 1);
-                if (estaPago) {
-                    Date dataPagamento = new Date();
-                    aula.setDataPagamento(dataPagamento);
-                }
-                AulaDAO.getInstancia().put(aula);
+        setNumeroAula(getNumeroAula() + 1);
+        if (estaPago) {
+            Date dataPagamento = new Date();
+            aula.setDataPagamento(dataPagamento);
+        }
+        AulaDAO.getInstancia().put(aula);
+        System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
+        System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
     }    
     
     
@@ -50,9 +52,6 @@ public class ControladorAula {
             for (int i = 0; i < 4; i++) {
                 criaAula(nivel, ehPacote, estaPago, cpfAluno);
             }
-        System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
-        System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
-            //System.out.println(aula.getDataPagamento());
         }
     }
     

@@ -6,6 +6,7 @@
 package easysurf.Tela;
 
 import easysurf.Controlador.ControladorAluno;
+import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -300,7 +301,7 @@ public class TelaEdicaoAluno extends javax.swing.JFrame {
     }
     
     public void limpaTela(){
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaEdicaoAluno();
         rgAluno.setText("");
         relacaoEmergencia.setText("");
     }

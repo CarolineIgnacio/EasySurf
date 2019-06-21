@@ -12,6 +12,7 @@ import easysurf.Entidade.Aula;
 import easysurf.Entidade.Prancha;
 import easysurf.Tela.TelaAcessoFuncionario;
 import easysurf.Tela.TelaAluno;
+import easysurf.Tela.TelaCadastroAluguel;
 import easysurf.Tela.TelaCadastroAluno;
 import easysurf.Tela.TelaCadastroAula;
 import easysurf.Tela.TelaCadastroPrancha;
@@ -74,11 +75,39 @@ public class ControladorPrincipal {
         TelaCadastroPrancha.getInstance().setVisible(false);
     }
     
+    public void mostraTelaCadastroAluguel() {
+        TelaCadastroAluguel.getInstance().setVisible(true);
+    }
+    
+    public void mostraTelaEdicaoAluno() {
+        TelaEdicaoAluno.getInstance().setVisible(true);
+    }
+    
+    public void escondeTelaEdicaoAluno() {
+        TelaEdicaoAluno.getInstance().setVisible(false);
+    }
+    
+    public void escondeTelaCadastroAluguel() {
+        TelaCadastroAluguel.getInstance().setVisible(false);
+    }
+    
     public void mostraTelaCadastroAula(String CPF) {
         Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(CPF);
         TelaCadastroAula.getInstance().iniciaTela(aluno);
     }
     
+    public void escondeTelaEdicaoAula() {
+        TelaEdicaoAula.getInstance().setVisible(false);
+    }
+    
+    public void escondeTelaPrancha() {
+        TelaPrancha.getInstance().setVisible(false);
+    }
+    
+    public void escondeTelaEdicaoPrancha() {
+        TelaEdicaoPrancha.getInstance().setVisible(false);
+    }
+        
     public void mostraTelaEdicaoAula(int nrAula, Aluno aluno) {
         Aula aula = ControladorAula.getInstance().getAulaPeloNumero(nrAula);
         TelaEdicaoAula.getInstance().iniciaTela(aula, aluno);

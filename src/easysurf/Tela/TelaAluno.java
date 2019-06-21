@@ -473,7 +473,7 @@ public class TelaAluno extends javax.swing.JFrame {
         jLcontato.setText("");
         jLcontatoTel.setText("");
         jLrelacao.setText("");
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaAluno();
     }
     
      public void iniciaTela(Aluno aluno) {

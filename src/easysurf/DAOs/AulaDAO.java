@@ -86,6 +86,7 @@ public class AulaDAO implements Serializable {
     }
 
     public void put(Aula aula){
+        System.out.println("salvando aula");
         cacheAulas.put(aula.getNumeroAula(), aula);
         persist();
     }

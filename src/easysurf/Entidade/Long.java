@@ -16,18 +16,23 @@ public class Long implements Serializable{
     private int tamanho;
     private String observacoes;
     private String cor;
-    private String ID;
+    private int ID;
     private float preco;
     private float caucao;
 
-    public Long(int tamanho, String observacoes, String cor, float preco, float caucao) {
+    public Long(int ID, int tamanho, String observacoes, String cor, float preco, float caucao) {
         this.tamanho = tamanho;
         this.observacoes = observacoes;
         this.cor = cor;
         this.preco = preco;
         this.caucao = caucao;
+        this.ID = ID;
     }
 
+    public int getID(){
+        return ID;
+    }
+    
     public int getTamanho() {
         return tamanho;
     }

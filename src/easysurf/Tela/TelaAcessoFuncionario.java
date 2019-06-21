@@ -115,6 +115,7 @@ public class TelaAcessoFuncionario extends javax.swing.JFrame {
         senha = String.valueOf(jPasswordField1.getPassword());
         if(ControladorEscola.getInstance().senhaCorreta(senha)) {
             ControladorPrincipal.getInstance().mostraTelaPrincipal();
+            this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Senha incorreta.");
         }

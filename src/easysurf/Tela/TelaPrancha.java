@@ -241,7 +241,7 @@ public class TelaPrancha extends javax.swing.JFrame {
         jLtamanho.setText("");
         jTobs.setText("");
         jLdata.setText("");
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaPrancha();
     }
     
     public void iniciaTela(Prancha prancha) {

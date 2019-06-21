@@ -452,11 +452,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_adicionaLong
 
     private void adicionaAluguel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaAluguel
-        ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
+        
     }//GEN-LAST:event_adicionaAluguel
 
     private void AdicionaAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionaAluno
-        // TODO add your handling code here:
+        ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
     }//GEN-LAST:event_AdicionaAluno
 
     private void adicionaPrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaPrancha
@@ -536,40 +536,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public void acoes() {
-//        jButton1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ControladorPrincipal.getInstance().mostraTelaCadastroAluno();
-//            }
-//        });
-//        
-//        jButton2.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ControladorPrincipal.getInstance().mostraTelaCadastroPrancha();
-//            }
-//        });
-//        
-//        jButton3.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int row = jTable3.getSelectedRow();
-//                String cpf = (String)jTable3.getValueAt(row, 1);
-//                ControladorAluno.getInstance().removeAlunoCpf(cpf);
-//                loadTables();
-//            }
-//        });
-//        
-//        jButton4.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int row = jTable2.getSelectedRow();
-//                String id = (String)jTable2.getValueAt(row, 0);
-//                ControladorPrancha.getInstance().removePranchaCodigo(id);
-//                loadTables();
-//            }
-//        });
-
         jTable3.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table = (JTable) mouseEvent.getSource();

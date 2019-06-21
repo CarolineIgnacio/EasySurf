@@ -277,7 +277,7 @@ public class TelaEdicaoPrancha extends javax.swing.JFrame {
     }
     
     public void limpaTela(){
-        this.setVisible(false);
+        ControladorPrincipal.getInstance().escondeTelaEdicaoPrancha();
     }
 
     public void iniciaTela(Prancha prancha) {

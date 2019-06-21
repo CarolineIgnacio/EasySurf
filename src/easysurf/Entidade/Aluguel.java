@@ -20,18 +20,18 @@ public class Aluguel implements Serializable {
     private Aluno aluno;
     private Prancha prancha;
     private Long rLong;
-    private String ID;
+    private int ID;
     private String CPF;
     private float valor;
-
-    public Aluguel(float caucao, Date dataAluguel, int nrHoras, String CPF, Prancha prancha, Long rlong){
+ 
+    public Aluguel(int ID, float caucao, Date dataAluguel, int nrHoras, String CPF, Prancha prancha, Long rlong){
         this.caucao = caucao;
         this.dataAluguel = dataAluguel;
         this.nrHoras = nrHoras;
         this.CPF = CPF;
         this.prancha = prancha;
         this.rLong = rlong;
-        
+        this.ID = ID;
     }
 
     public float getCaucao() {
@@ -56,6 +56,10 @@ public class Aluguel implements Serializable {
 
     public Long getrLong() {
         return rLong;
+    }
+    
+    public int getID(){
+        return ID;
     }
 
     public void setCaucao(float caucao) {
