@@ -105,6 +105,11 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Confirmar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -210,9 +215,13 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
     private void jfIDPranchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfIDPranchaActionPerformed
          String prancha = jfIDPrancha.getText();
          if (!ControladorPrancha.getInstance().pranchaExiste(prancha)){
-                JOptionPane.showMessageDialog(null, "Favor inserir um ID de prancha válido"); 
+                JOptionPane.showMessageDialog(null, "Favor inserir um ID de prancha válido!"); 
             } 
     }//GEN-LAST:event_jfIDPranchaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
