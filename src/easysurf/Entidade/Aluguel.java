@@ -24,11 +24,12 @@ public class Aluguel implements Serializable {
     private String CPF;
     private float valor;
  
-    public Aluguel(int ID, float caucao, Date dataAluguel, int nrHoras, String CPF, Prancha prancha, Long rlong){
+    public Aluguel(int ID, Date dataAluguel, float valor, int nrHoras, String CPF, Prancha prancha, Long rlong){
         this.caucao = caucao;
         this.dataAluguel = dataAluguel;
         this.nrHoras = nrHoras;
         this.CPF = CPF;
+        this.valor = valor;
         this.prancha = prancha;
         this.rLong = rlong;
         this.ID = ID;

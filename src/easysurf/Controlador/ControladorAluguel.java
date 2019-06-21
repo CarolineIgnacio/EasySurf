@@ -5,6 +5,8 @@
  */
 package easysurf.Controlador;
 
+import java.util.Date;
+
 /**
  *
  * @author trust
@@ -23,7 +25,7 @@ public class ControladorAluguel {
         this.ID = ID;
     }
     
-    public void criaNovoAluguel(){
+    public void criaNovoAluguel(Date dataAluguel, float valor, int nrHoras, String CPF, String prancha, int rlong){
     int aluguelID = getID();
     setID(aluguelID + 1);
     }

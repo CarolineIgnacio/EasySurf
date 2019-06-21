@@ -5,8 +5,10 @@
  */
 package easysurf.Tela;
 
+import easysurf.Controlador.ControladorAluguel;
 import easysurf.Controlador.ControladorPrancha;
 import easysurf.Controlador.ControladorPrincipal;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +33,7 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
     }
 
     private void limpaTela(){
-    ControladorPrincipal.getInstance().escondeTelaCadastroAluguel();
+        ControladorPrincipal.getInstance().escondeTelaCadastroAluguel();
     }
 
     /**
@@ -56,7 +58,7 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
         jfHoras = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jfValor = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        jbCadastrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jFormattedTextField7.setText("jFormattedTextField7");
@@ -71,7 +73,11 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
 
         jLabel2.setText("ID Prancha:");
 
-        jfIDPrancha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        try {
+            jfIDPrancha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jfIDPrancha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jfIDPranchaActionPerformed(evt);
@@ -79,6 +85,11 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
         });
 
         jdIDLong.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jdIDLong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jdIDLongActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("ID Long:");
 
@@ -104,14 +115,19 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbCadastrar.setText("Confirmar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                clickCadastraAluguel(evt);
             }
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickCancela(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,7 +165,7 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton1)
+                .addComponent(jbCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(44, 44, 44))
@@ -181,7 +197,7 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(jbCadastrar)
                     .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -215,17 +231,31 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
     private void jfIDPranchaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfIDPranchaActionPerformed
          String prancha = jfIDPrancha.getText();
          if (!ControladorPrancha.getInstance().pranchaExiste(prancha)){
+                jfIDPrancha.setValue(null);
                 JOptionPane.showMessageDialog(null, "Favor inserir um ID de prancha válido!"); 
             } 
     }//GEN-LAST:event_jfIDPranchaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void clickCadastraAluguel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickCadastraAluguel
+        int nrHoras = Integer.getInteger(jdIDLong.getText());
+        String idPrancha = jfIDPrancha.getText();
+        float vTotal = Float.valueOf(jfValor.getText());
+        Date dataAluguel = new Date();
+        String cpf = jfCPF.getText();
+        int idLong = Integer.getInteger(jfHoras.getText());
+        ControladorAluguel.getInstance().criaNovoAluguel(dataAluguel, vTotal, nrHoras, cpf, idPrancha, idLong);
+    }//GEN-LAST:event_clickCadastraAluguel
+
+    private void clickCancela(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickCancela
+        limpaTela();
+    }//GEN-LAST:event_clickCancela
+
+    private void jdIDLongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdIDLongActionPerformed
+        // verificar se o ID do long Existe, conforme prancha
+    }//GEN-LAST:event_jdIDLongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFormattedTextField jFormattedTextField7;
     private javax.swing.JLabel jLabel1;
@@ -234,6 +264,7 @@ public class TelaCadastroAluguel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbCadastrar;
     private javax.swing.JFormattedTextField jdIDLong;
     private javax.swing.JFormattedTextField jfCPF;
     private javax.swing.JFormattedTextField jfHoras;

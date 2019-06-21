@@ -452,7 +452,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_adicionaLong
 
     private void adicionaAluguel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaAluguel
-        
+        ControladorPrincipal.getInstance().mostraTelaCadastroAluguel();
+        System.out.print("entrei no click");
+        loadTables();
     }//GEN-LAST:event_adicionaAluguel
 
     private void AdicionaAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionaAluno
