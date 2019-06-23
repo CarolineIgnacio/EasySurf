@@ -19,12 +19,12 @@ public class Aluguel implements Serializable {
     private int nrHoras;
     private Aluno aluno;
     private Prancha prancha;
-    private Long rLong;
+    private RoupaLong rLong;
     private int ID;
     private String CPF;
     private float valor;
  
-    public Aluguel(int ID, Date dataAluguel, float valor, int nrHoras, String CPF, Prancha prancha, Long rlong){
+    public Aluguel(int ID, Date dataAluguel, float valor, int nrHoras, String CPF, Prancha prancha, RoupaLong rlong){
         this.caucao = caucao;
         this.dataAluguel = dataAluguel;
         this.nrHoras = nrHoras;
@@ -55,7 +55,7 @@ public class Aluguel implements Serializable {
         return prancha;
     }
 
-    public Long getrLong() {
+    public RoupaLong getrLong() {
         return rLong;
     }
     
@@ -83,7 +83,7 @@ public class Aluguel implements Serializable {
         this.prancha = prancha;
     }
 
-    public void setrLong(Long rLong) {
+    public void setrLong(RoupaLong rLong) {
         this.rLong = rLong;
     }
     

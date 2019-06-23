@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author trust
  */
-public class Long implements Serializable{
+public class RoupaLong implements Serializable{
    
     private int tamanho;
     private String observacoes;
@@ -19,14 +19,15 @@ public class Long implements Serializable{
     private int ID;
     private float preco;
     private float caucao;
+    private boolean disponivel;
 
-    public Long(int ID, int tamanho, String observacoes, String cor, float preco, float caucao) {
+    public RoupaLong(int ID, int tamanho, String cor, float preco, float caucao) {
         this.tamanho = tamanho;
-        this.observacoes = observacoes;
         this.cor = cor;
         this.preco = preco;
         this.caucao = caucao;
         this.ID = ID;
+        this.disponivel = true;
     }
 
     public int getID(){
@@ -51,6 +52,14 @@ public class Long implements Serializable{
 
     public float getCaucao() {
         return caucao;
+    }
+    
+    public boolean getDisponivel() {
+        return disponivel;
+    }
+    
+    public void setDiponível(boolean estado) {
+        this.disponivel = estado;
     }
 
     public void setTamanho(int tamanho) {

@@ -10,16 +10,20 @@ import easysurf.DAOs.PranchaDAO;
 import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Aula;
 import easysurf.Entidade.Prancha;
+import easysurf.Entidade.RoupaLong;
 import easysurf.Tela.TelaAcessoFuncionario;
 import easysurf.Tela.TelaAluno;
 import easysurf.Tela.TelaCadastroAluguel;
 import easysurf.Tela.TelaCadastroAluno;
 import easysurf.Tela.TelaCadastroAula;
+import easysurf.Tela.TelaCadastroLong;
 import easysurf.Tela.TelaCadastroPrancha;
 import easysurf.Tela.TelaPrincipal;
 import easysurf.Tela.TelaEdicaoAula;
 import easysurf.Tela.TelaEdicaoAluno;
+import easysurf.Tela.TelaEdicaoLong;
 import easysurf.Tela.TelaEdicaoPrancha;
+import easysurf.Tela.TelaLong;
 import easysurf.Tela.TelaPrancha;
 /**
  *
@@ -71,6 +75,10 @@ public class ControladorPrincipal {
         TelaPrancha.getInstance().iniciaTela(prancha);
     }
     
+    public void mostraTelaCadastroLong() {
+        TelaCadastroLong.getInstance().setVisible(true);
+    }
+    
     public void escondeTelaCadastroPrancha() {
         TelaCadastroPrancha.getInstance().setVisible(false);
     }
@@ -81,6 +89,24 @@ public class ControladorPrincipal {
     
     public void mostraTelaEdicaoAluno() {
         TelaEdicaoAluno.getInstance().setVisible(true);
+    }
+    
+    public void mostraTelaEdicaoLong(int ID) {
+        RoupaLong roupaLong = ControladorLong.getInstance().getLong(ID);
+        TelaEdicaoLong.getInstance().iniciaTela(roupaLong);
+    }
+    
+    public void mostraTelaLong(int ID) {
+        RoupaLong roupaLong = ControladorLong.getInstance().getLong(ID);
+        TelaLong.getInstance().iniciaTela(roupaLong);
+    }
+    
+    public void escondeTelaEdicaoLong() {
+        TelaEdicaoLong.getInstance().setVisible(false);
+    }
+    
+    public void escondeTelaLong() {
+        TelaLong.getInstance().setVisible(false);
     }
     
     public void escondeTelaEdicaoAluno() {

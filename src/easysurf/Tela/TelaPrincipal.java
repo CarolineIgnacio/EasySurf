@@ -7,10 +7,12 @@ package easysurf.Tela;
 
 import easysurf.Controlador.ControladorAluno;
 import easysurf.Controlador.ControladorEscola;
+import easysurf.Controlador.ControladorLong;
 import easysurf.Controlador.ControladorPrancha;
 import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Prancha;
+import easysurf.Entidade.RoupaLong;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static TelaPrincipal instance;
     public ArrayList<Aluno> alunos;
     public ArrayList<Prancha> pranchas;
+    public ArrayList<RoupaLong> longs;
 
     /**
      * Creates new form TelaPrincipal
@@ -253,15 +256,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tamanho", "Preço", "Disponibilidade"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jTabbedPane1.addTab("Longs", jScrollPane1);
@@ -304,6 +319,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton3.setText("Deletar Aluno");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,6 +327,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton4.setText("Deletar Prancha");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,6 +335,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton5.setText("Deletar Long");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,6 +343,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton6.setText("Adicionar Long");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,6 +353,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jCheckBox3.setText("Longs disponíveis");
 
+        jButton7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton7.setText("Adicionar Aluguel");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,7 +367,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -364,21 +384,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox2)
-                                            .addComponent(jCheckBox1))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton7)
-                                        .addGap(35, 35, 35)))
+                                    .addComponent(jCheckBox2)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jCheckBox3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,8 +423,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jButton7))
+                    .addComponent(jCheckBox3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -448,7 +467,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_removePrancha
 
     private void adicionaLong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaLong
-        // TODO add your handling code here:
+        ControladorPrincipal.getInstance().mostraTelaCadastroLong();
     }//GEN-LAST:event_adicionaLong
 
     private void adicionaAluguel(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionaAluguel
@@ -535,6 +554,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tableModel2.addRow(dataPrancha);
         }
         jTable2.setModel(tableModel2);
+        
+        String[] colunasLongs = new String[]{"ID", "Tamanho", "Preço", "Disponibilidade"};
+        DefaultTableModel tableModel3 = new DefaultTableModel(colunasLongs, 0);
+        this.longs = ControladorLong.getInstance().listaLongs();
+        for (RoupaLong roupaLong : longs) {
+            int ID = roupaLong.getID();
+            String disponivel;
+            int tamanho = roupaLong.getTamanho();
+            float preco = roupaLong.getPreco();
+            if(!roupaLong.getDisponivel()){
+                disponivel = "Não";
+            }else{
+                disponivel = "Sim";
+            }
+            Object[] dataLong = {ID, tamanho, preco, disponivel};
+            tableModel3.addRow(dataLong);
+        }
+        jTable1.setModel(tableModel3);
     }
 
     public void acoes() {
@@ -557,6 +594,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 int column = table.columnAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column<3) {
                     ControladorPrincipal.getInstance().mostraTelaPrancha((String)jTable2.getValueAt(row, 0));;
+                }
+            }
+        });
+        
+        jTable3.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table = (JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                int column = table.columnAtPoint(point);
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column<3) {
+                    ControladorPrincipal.getInstance().mostraTelaLong((Integer)jTable3.getValueAt(row, 0));;
                 }
             }
         });
