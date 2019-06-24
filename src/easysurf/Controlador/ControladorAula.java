@@ -31,7 +31,7 @@ public class ControladorAula {
         this.numeroAula = numeroAula;
     }
 
-    private void criaAula(int nivel, boolean ehPacote, boolean estaPago, String cpfAluno){
+    private void criaAula(int nivel, boolean ehPacote, boolean estaPago, String cpfAluno) {
         Aula aula = new Aula(nivel, ehPacote, estaPago, getNumeroAula(), cpfAluno);
         setNumeroAula(getNumeroAula() + 1);
         if (estaPago) {
@@ -41,9 +41,8 @@ public class ControladorAula {
         AulaDAO.getInstancia().put(aula);
         System.out.println("Numero: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getNumeroAula());
         System.out.println("Data: " + AulaDAO.getInstancia().get(aula.getNumeroAula()).getDataRealizacao());
-    }    
-    
-    
+    }
+
     public void adicionaNovasAulas(boolean ehPacote, boolean estaPago, String cpfAluno) {
         Aluno aluno = ControladorAluno.getInstance().getAlunoCpf(cpfAluno);
         int nivel = aluno.getNivel();
@@ -54,16 +53,18 @@ public class ControladorAula {
             }
         }
     }
-    
-    public void editaAula(Aluno aluno, String prancha, Date dataRealizacao, boolean pago, Date datapagto, Aula aula)
-    {
+
+    public void editaAula(Aluno aluno, String prancha, Date dataRealizacao, boolean pago, Date datapagto, Aula aula) {
         Prancha objPrancha = PranchaDAO.getInstancia().get(prancha);
-        if (datapagto != null){
-        aula.setDataPagamento(datapagto);}
+        if (datapagto != null) {
+            aula.setDataPagamento(datapagto);
+        }
         aula.setPrancha(objPrancha);
-        if (dataRealizacao != null){
-        aula.setDataRealizacao(dataRealizacao);
-        aula.setRealizada(true);}
+        if (dataRealizacao != null) {
+            aula.setDataRealizacao(dataRealizacao);
+            aula.setRealizada(true);
+            ControladorAluno.getInstance().setNivelAluno(aluno);
+        }
         aula.setPagamentoRealizado(pago);
         AulaDAO.getInstancia().put(aula);
     }

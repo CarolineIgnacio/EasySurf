@@ -339,6 +339,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pranchas dispon&#xed;veis"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>

@@ -14,8 +14,6 @@ import easysurf.Entidade.Aluno;
 import easysurf.Entidade.Prancha;
 import easysurf.Entidade.RoupaLong;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -310,6 +308,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jCheckBox2.setText("Pranchas disponíveis");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton2.setText("Adicionar Prancha");
@@ -449,19 +452,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void removeAluno(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAluno
         int row = jTable3.getSelectedRow();
-        String cpf = (String)jTable3.getValueAt(row, 1);
+        String cpf = (String) jTable3.getValueAt(row, 1);
         ControladorAluno.getInstance().removeAlunoCpf(cpf);
         loadTables();
     }//GEN-LAST:event_removeAluno
 
     private void removePrancha(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePrancha
         int row = jTable2.getSelectedRow();
-        String id = (String)jTable2.getValueAt(row, 0);
+        String id = (String) jTable2.getValueAt(row, 0);
         ControladorPrancha.getInstance().removePranchaCodigo(id);
         loadTables();
     }//GEN-LAST:event_removePrancha
@@ -488,6 +491,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void removeLong(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLong
         // TODO add your handling code here:
     }//GEN-LAST:event_removeLong
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if (jCheckBox2.isSelected()) {
+           String[] colunasPranchas = new String[]{"Id", "Modelo", "Alugada"};
+        DefaultTableModel tableModel2 = new DefaultTableModel(colunasPranchas, 0);
+        this.pranchas = ControladorEscola.getInstance().getListaPranchas();
+        for (Prancha prancha : pranchas) {
+            if (prancha.isDisponivel()) {
+                String modelo = prancha.getModelo();
+            String alugada;
+            String id = prancha.getCodigo();
+            if (prancha.isDisponivel()) {
+                alugada = "Não";
+            } else {
+                alugada = "Sim";
+            }
+            Object[] dataPrancha = {id, modelo, alugada};
+            tableModel2.addRow(dataPrancha);
+            }
+        }
+        jTable2.setModel(tableModel2); 
+        } else {
+            loadTables();
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,16 +573,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String modelo = prancha.getModelo();
             String alugada;
             String id = prancha.getCodigo();
-            if(prancha.isDisponivel()){
+            if (prancha.isDisponivel()) {
                 alugada = "Não";
-            }else{
+            } else {
                 alugada = "Sim";
             }
             Object[] dataPrancha = {id, modelo, alugada};
             tableModel2.addRow(dataPrancha);
         }
         jTable2.setModel(tableModel2);
-        
+
         String[] colunasLongs = new String[]{"ID", "Tamanho", "Preço", "Disponibilidade"};
         DefaultTableModel tableModel3 = new DefaultTableModel(colunasLongs, 0);
         this.longs = ControladorLong.getInstance().listaLongs();
@@ -563,9 +591,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String disponivel;
             int tamanho = roupaLong.getTamanho();
             float preco = roupaLong.getPreco();
-            if(!roupaLong.getDisponivel()){
+            if (!roupaLong.getDisponivel()) {
                 disponivel = "Não";
-            }else{
+            } else {
                 disponivel = "Sim";
             }
             Object[] dataLong = {ID, tamanho, preco, disponivel};
@@ -581,34 +609,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-                    ControladorPrincipal.getInstance().mostraTelaAluno((String)jTable3.getValueAt(row, 1));
+                    ControladorPrincipal.getInstance().mostraTelaAluno((String) jTable3.getValueAt(row, 1));
                 }
             }
         });
-        
+
         jTable2.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table = (JTable) mouseEvent.getSource();
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 int column = table.columnAtPoint(point);
-                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column<3) {
-                    ControladorPrincipal.getInstance().mostraTelaPrancha((String)jTable2.getValueAt(row, 0));;
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column < 3) {
+                    ControladorPrincipal.getInstance().mostraTelaPrancha((String) jTable2.getValueAt(row, 0));;
                 }
             }
         });
-        
-        jTable3.addMouseListener(new MouseAdapter() {
+
+        jTable1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
                 JTable table = (JTable) mouseEvent.getSource();
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 int column = table.columnAtPoint(point);
-                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column<3) {
-                    ControladorPrincipal.getInstance().mostraTelaLong((Integer)jTable3.getValueAt(row, 0));;
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1 && column < 3) {
+                    ControladorPrincipal.getInstance().mostraTelaLong((Integer) jTable1.getValueAt(row, 0));;
                 }
             }
         });
+
     }
 
     public static TelaPrincipal getInstance() {

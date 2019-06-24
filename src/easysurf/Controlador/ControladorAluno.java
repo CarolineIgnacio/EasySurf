@@ -65,5 +65,19 @@ public class ControladorAluno {
     public Aluno getAlunoCpf(String cpf) {
         return ControladorPrincipal.getDaoAluno().get(cpf);
     }
+    
+    public void setNivelAluno(Aluno aluno) {
+        if (aluno.getAulasFeitas() < 15 ) {
+            aluno.setAulasFeitas();
+            if (aluno.getAulasFeitas() <= 5) {
+                aluno.setNivel(1);
+            } else if (aluno.getAulasFeitas() > 5 && aluno.getAulasFeitas() < 10 ) {
+                aluno.setNivel(2);
+            } else {
+                aluno.setNivel(3);
+            }
+            atualizaAluno(aluno);
+        }
+    }
 
 }
