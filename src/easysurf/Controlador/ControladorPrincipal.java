@@ -79,6 +79,10 @@ public class ControladorPrincipal {
         TelaCadastroLong.getInstance().setVisible(true);
     }
     
+    public void escondeTelaCadastroLong() {
+        TelaCadastroLong.getInstance().setVisible(false);
+    }
+    
     public void escondeTelaCadastroPrancha() {
         TelaCadastroPrancha.getInstance().setVisible(false);
     }

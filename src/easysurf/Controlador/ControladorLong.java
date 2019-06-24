@@ -16,7 +16,8 @@ import java.util.Collection;
  */
 public class ControladorLong {
 
-    private static ControladorLong instance;
+    private RoupaLong roupaLong;
+    public static ControladorLong instance;
 
     private int ID;
 
@@ -28,15 +29,17 @@ public class ControladorLong {
         this.ID = ID;
     }
 
-    public boolean criaLong(int ID, int tamanho, String cor, float preco, float caucao) {
-        if (!longExiste(ID)) {
+    public boolean criaLong(int ID, int tamanho, String obs, String cor, float preco, float caucao) {
+        if (longExiste(ID)) {
+            System.out.println("chegou aqui");
             return false;
-            //enviar mensagem de que já existe
         }
-        RoupaLong roupaLong = new RoupaLong(ID, tamanho, cor, preco, caucao);
+        roupaLong = new RoupaLong(ID, tamanho, cor, preco, caucao);
+        if (obs != null) {
+            roupaLong.setObservacoes(obs);
+        }
         LongDAO.getInstancia().put(roupaLong);
         return true;
-        //enviar mensagem de criado com sucesso
     }
 
     public boolean atualizaLong(RoupaLong roupaLong) {
@@ -75,6 +78,12 @@ public class ControladorLong {
             return true;
         }
         return false;
+    }
+    
+    public void adicionaOBS(int ID, String obs) {
+        roupaLong = getLong(ID);
+        roupaLong.setObservacoes(obs);
+        LongDAO.getInstancia().put(roupaLong);   
     }
     
     public void criaNovoLong() {
