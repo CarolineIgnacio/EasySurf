@@ -295,11 +295,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Alugueis", jScrollPane4);
 
         jTextField1.setText("CPF ou ID");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Pesquisar:");
@@ -538,10 +533,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             loadTables();
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
          * @param args the command line arguments
