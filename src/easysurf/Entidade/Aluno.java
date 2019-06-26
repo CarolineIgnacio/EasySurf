@@ -133,6 +133,16 @@ public class Aluno implements Serializable{
     public void setRelacaoEmergencia(String relacaoEmergencia) {
         this.relacaoEmergencia = relacaoEmergencia;
     }
-      
     
+    public boolean isEmDebito(){
+        boolean isEmDebito = false;
+        ArrayList<Aula> aulas = getAulas();
+        for (Aula aula : aulas){
+            if(!aula.isPagamentoRealizado()){
+                isEmDebito = true;
+                return isEmDebito;
+            }
+        }
+        return isEmDebito;
+    }
 }

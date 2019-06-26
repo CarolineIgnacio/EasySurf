@@ -79,5 +79,25 @@ public class ControladorAluno {
             atualizaAluno(aluno);
         }
     }
+    
+    public ArrayList<Aluno> getAlunoByNome (String nome){
+        ArrayList<Aluno> alunosGeral = new ArrayList<Aluno>(ControladorPrincipal.getDaoAluno().getList());
+        ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+        for (Aluno aluno : alunosGeral){
+            if(aluno.getNome().toUpperCase().startsWith(nome.toUpperCase())){
+                alunos.add(aluno);
+            }
+        }
+        return alunos;
+    }
 
+    public Aluno getAlunoCpfLimpo(String cpf){
+        ArrayList<Aluno> alunosGeral = new ArrayList<Aluno>(ControladorPrincipal.getDaoAluno().getList());
+        for (Aluno aluno : alunosGeral){
+            if(aluno.getCPF().replaceAll("[\\.-]","").startsWith(cpf.replaceAll("[\\.-]",""))){
+                return aluno;
+            }
+        }
+        return null;
+    }
 }

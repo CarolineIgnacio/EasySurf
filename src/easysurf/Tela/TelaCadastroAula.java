@@ -10,6 +10,7 @@ import easysurf.Controlador.ControladorPrincipal;
 import easysurf.Entidade.Aluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -211,6 +212,10 @@ public class TelaCadastroAula extends javax.swing.JFrame {
     
      public void iniciaTela(Aluno aluno) {
         this.aluno = aluno;
+        if (this.aluno.isEmDebito()){
+            JOptionPane.showMessageDialog(null, "O aluno está em débito e não pode cadastrar mais aulas.");
+            return;
+        }
         jLnome.setText(aluno.getNome());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
         this.setVisible(true);

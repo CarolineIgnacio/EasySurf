@@ -295,6 +295,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Alugueis", jScrollPane4);
 
         jTextField1.setText("CPF ou ID");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Pesquisar:");
@@ -398,7 +403,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -452,6 +457,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()) {
+            String[] colunasAlunos = new String[]{"Nome", "CPF", "Nivel"};
+            DefaultTableModel tableModel = new DefaultTableModel(colunasAlunos, 0);
+            this.alunos = ControladorEscola.getInstance().getListaAlunos();
+            for (Aluno aluno : alunos) {
+                if (aluno.isEmDebito()) {
+                    String nome = aluno.getNome();
+                    String cpf = aluno.getCPF();
+                    int nivel = aluno.getNivel();
+                    Object[] dataAluno = {nome, cpf, nivel};
+                    tableModel.addRow(dataAluno);
+                }
+            }
+            jTable3.setModel(tableModel);
+        } else {
+            loadTables();
+        }
 
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
@@ -494,32 +516,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         if (jCheckBox2.isSelected()) {
-           String[] colunasPranchas = new String[]{"Id", "Modelo", "Alugada"};
-        DefaultTableModel tableModel2 = new DefaultTableModel(colunasPranchas, 0);
-        this.pranchas = ControladorEscola.getInstance().getListaPranchas();
-        for (Prancha prancha : pranchas) {
-            if (prancha.isDisponivel()) {
-                String modelo = prancha.getModelo();
-            String alugada;
-            String id = prancha.getCodigo();
-            if (prancha.isDisponivel()) {
-                alugada = "Não";
-            } else {
-                alugada = "Sim";
+            String[] colunasPranchas = new String[]{"Id", "Modelo", "Alugada"};
+            DefaultTableModel tableModel2 = new DefaultTableModel(colunasPranchas, 0);
+            this.pranchas = ControladorEscola.getInstance().getListaPranchas();
+            for (Prancha prancha : pranchas) {
+                if (prancha.isDisponivel()) {
+                    String modelo = prancha.getModelo();
+                    String alugada;
+                    String id = prancha.getCodigo();
+                    if (prancha.isDisponivel()) {
+                        alugada = "Não";
+                    } else {
+                        alugada = "Sim";
+                    }
+                    Object[] dataPrancha = {id, modelo, alugada};
+                    tableModel2.addRow(dataPrancha);
+                }
             }
-            Object[] dataPrancha = {id, modelo, alugada};
-            tableModel2.addRow(dataPrancha);
-            }
-        }
-        jTable2.setModel(tableModel2); 
+            jTable2.setModel(tableModel2);
         } else {
             loadTables();
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

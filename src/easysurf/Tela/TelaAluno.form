@@ -52,22 +52,22 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLnomealuno" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nomeAluno" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelTelefone" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLtelefone" min="-2" max="-2" attributes="0"/>
+                                  <Component id="telefoneAluno" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane1" min="-2" pref="390" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton4" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="btnDeletar" min="-2" pref="96" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jButton2" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
-                                          <Component id="jButton1" min="-2" pref="96" max="-2" attributes="0"/>
+                                          <Component id="btnNovaAula" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                          <Component id="btnEditar" min="-2" pref="96" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="2" attributes="0">
                                                   <Component id="jLabel5" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -84,22 +84,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelNomeContato" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLcontato" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nomeContato" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelTelefoneContato" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jLcontatoTel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="telefoneContato" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="31" max="32767" attributes="0"/>
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRelacaoContato" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLrelacao" min="-2" max="-2" attributes="0"/>
+                          <Component id="relacaoContato" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="btnVoltar" min="-2" pref="78" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -112,11 +112,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeletar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNovaAula" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -125,10 +125,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLnomealuno" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLtelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nomeAluno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefoneAluno" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
@@ -136,22 +136,22 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLcontato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelNomeContato" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomeContato" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLcontatoTel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLrelacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelTelefoneContato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="telefoneContato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelRelacaoContato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="relacaoContato" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="30" max="32767" attributes="0"/>
                       </Group>
@@ -161,7 +161,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="labelNome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -169,7 +169,7 @@
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="labelTelefone">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -184,7 +184,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tabelaAulas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="100">
@@ -197,7 +197,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnEditar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -208,7 +208,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abreTelaEdicaoAluno"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnNovaAula">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -235,7 +235,7 @@
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnVoltar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -246,7 +246,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltaParaTelaAnterior"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnDeletar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
@@ -257,42 +257,42 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeAluno"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLnomealuno">
+        <Component class="javax.swing.JLabel" name="nomeAluno">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLtelefone">
+        <Component class="javax.swing.JLabel" name="telefoneAluno">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="labelNomeContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome contato:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLcontato">
+        <Component class="javax.swing.JLabel" name="nomeContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="labelRelacaoContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rela&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLrelacao">
+        <Component class="javax.swing.JLabel" name="relacaoContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel7"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="labelTelefoneContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLcontatoTel">
+        <Component class="javax.swing.JLabel" name="telefoneContato">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel9"/>
           </Properties>
