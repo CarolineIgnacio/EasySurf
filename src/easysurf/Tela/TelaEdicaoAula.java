@@ -248,12 +248,19 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
                 datapagto = formatador.parse(jFdatapagto.getText());}
             if (jFdatarealizada.getValue() != null){
                 dataRealizacao = formatador.parse(jFdatarealizada.getText());}
-            if (ControladorPrancha.getInstance().pranchaExiste(prancha)){
-                ControladorAula.getInstance().editaAula(aluno, prancha, dataRealizacao, pagou, datapagto, aula);
+            if (ControladorPrancha.getInstance().pranchaExiste(prancha) && dataRealizacao != null){
+                ControladorAula.getInstance().setAulaFeita(aluno, prancha, dataRealizacao, aula);
                 JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!"); 
                 limpaTela();
-            } 
-            else{ JOptionPane.showMessageDialog(null, "ID da prancha não existe!");}
+            }
+            else{
+                if (jFdatarealizada.getValue() == null && jFid.getValue() == null && pagou){
+                    ControladorAula.getInstance().setAulaPaga(aula, datapagto);
+                    JOptionPane.showMessageDialog(null, "A aula foi paga com sucesso!"); 
+                    limpaTela();
+                }
+                else{ JOptionPane.showMessageDialog(null, "ID da prancha não existe!");}
+            }
         }
         catch (ParseException ex) 
          {

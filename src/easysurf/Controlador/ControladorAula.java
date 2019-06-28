@@ -69,6 +69,16 @@ public class ControladorAula {
         AulaDAO.getInstancia().put(aula);
     }
 
+    public void setAulaFeita(Aluno aluno, String prancha, Date dataRealizacao, Aula aula)
+    {
+        Prancha objPrancha = PranchaDAO.getInstancia().get(prancha);
+        aula.setPrancha(objPrancha);
+        aula.setDataRealizacao(dataRealizacao);
+        aula.setRealizada(true);
+        ControladorAluno.getInstance().setNivelAluno(aluno);
+        AulaDAO.getInstancia().put(aula);
+    }
+    
     public Aula getAulaPeloNumero(int numeroAula) {
         return AulaDAO.getInstancia().get(numeroAula);
     }
@@ -80,4 +90,8 @@ public class ControladorAula {
         return instance;
     }
 
+    public void setAulaPaga(Aula aula, Date datapagto){
+        aula.setDataPagamento(datapagto);
+        aula.setPagamentoRealizado(true);
+    }
 }

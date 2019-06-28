@@ -454,6 +454,7 @@ public class TelaAluno extends javax.swing.JFrame {
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     ControladorPrincipal.getInstance().mostraTelaEdicaoAula((int)tabelaAulas.getValueAt(row, 3), aluno);  ///Manter essa linha, pro resto funfarr 
                     loadTable();
+                    limpaTela();
                 }
             }
         });
