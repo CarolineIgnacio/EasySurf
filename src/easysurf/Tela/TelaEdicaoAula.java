@@ -20,11 +20,11 @@ import javax.swing.JOptionPane;
  * @author trust
  */
 public class TelaEdicaoAula extends javax.swing.JFrame {
-
+    
     public static TelaEdicaoAula instance;
     private static Aluno aluno;
     private static Aula aula;
-    
+
     /**
      * Creates new form TelaEdicaoAula
      */
@@ -238,34 +238,34 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salvaAlteracoes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvaAlteracoes
-        try{
+        try {
             SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
             String prancha = jFid.getText();
             Date datapagto = null;
             Date dataRealizacao = null;
             boolean pagou = jCpago.isSelected();
-            if (jFdatapagto.getValue() != null){
-                datapagto = formatador.parse(jFdatapagto.getText());}
-            if (jFdatarealizada.getValue() != null){
-                dataRealizacao = formatador.parse(jFdatarealizada.getText());}
-            if (ControladorPrancha.getInstance().pranchaExiste(prancha) && dataRealizacao != null){
+            if (jFdatapagto.getValue() != null) {
+                datapagto = formatador.parse(jFdatapagto.getText());
+            }
+            if (jFdatarealizada.getValue() != null) {
+                dataRealizacao = formatador.parse(jFdatarealizada.getText());
+            }
+            if (ControladorPrancha.getInstance().pranchaExiste(prancha) && dataRealizacao != null) {
                 ControladorAula.getInstance().setAulaFeita(aluno, prancha, dataRealizacao, aula);
-                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!"); 
+                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");                
                 limpaTela();
-            }
-            else{
-                if (jFdatarealizada.getValue() == null && jFid.getValue() == null && pagou){
+            } else {
+                if (jFdatarealizada.getValue() == null && jFid.getValue() == null && pagou) {
                     ControladorAula.getInstance().setAulaPaga(aula, datapagto);
-                    JOptionPane.showMessageDialog(null, "A aula foi paga com sucesso!"); 
+                    JOptionPane.showMessageDialog(null, "A aula foi paga com sucesso!");                    
                     limpaTela();
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID da prancha não existe!");
                 }
-                else{ JOptionPane.showMessageDialog(null, "ID da prancha não existe!");}
             }
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de parse!");
         }
-        catch (ParseException ex) 
-         {
-             JOptionPane.showMessageDialog(null, "Erro de parse!");
-         }
         
     }//GEN-LAST:event_salvaAlteracoes
 
@@ -284,7 +284,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
     private void jFdatapagtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFdatapagtoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFdatapagtoActionPerformed
-
+    
     public static TelaEdicaoAula getInstance() {
         if (instance == null) {
             return instance = new TelaEdicaoAula();
@@ -292,24 +292,35 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         return instance;
     }
     
-    public void iniciaTela(Aula aula, Aluno aluno){
+    public void iniciaTela(Aula aula, Aluno aluno) {
         this.aluno = aluno;
         this.aula = aula;
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");     
-        if (aula.getDataRealizacao() != null){
-        jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));}
-        if (aula.getDataPagamento() != null){
-            jFdatapagto.setText(formatador.format(aula.getDataPagamento())); }
-        if (aula.getPrancha() != null){
-        jFid.setText(aula.getPrancha().getCodigo());}
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");        
+        if (aula.getDataRealizacao() != null) {
+            jFdatarealizada.setText(formatador.format(aula.getDataRealizacao()));
+            jFdatarealizada.setEditable(false);
+        }
+        if (aula.getDataPagamento() != null) {
+            jFdatapagto.setText(formatador.format(aula.getDataPagamento()));            
+            jFdatapagto.setEditable(false);
+        }
+        if (aula.getPrancha() != null) {
+            jFid.setText(aula.getPrancha().getCodigo());
+        }
         jLnome.setText(aluno.getNome());
         jLnivel.setText(String.valueOf(aluno.getNivel()));
-        jCpago.setSelected(aula.isPagamentoRealizado());
+        if (aula.isPagamentoRealizado()) {
+            jCpago.setSelected(true);
+            jCpago.setEnabled(false);
+        } else {
+            jCpago.setSelected(false);
+            jCpago.setEnabled(true);
+        }
         
         this.setVisible(true);
     }
     
-    public void limpaTela(){
+    public void limpaTela() {
         jFdatarealizada.setText("");
         jFdatapagto.setText("");
         jLnome.setText("");
@@ -318,7 +329,7 @@ public class TelaEdicaoAula extends javax.swing.JFrame {
         jCpago.setSelected(false);
         ControladorPrincipal.getInstance().escondeTelaEdicaoAula();
     }
-    
+
     /**
      * @param args the command line arguments
      */
